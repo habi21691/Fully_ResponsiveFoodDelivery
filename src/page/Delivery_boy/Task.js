@@ -1,7 +1,7 @@
 import { Card, CardActions } from '@mui/material'
 import { Container } from '@mui/system'
 import axios from 'axios'
-import React, { useEffect, useState,useContext } from 'react'
+import React, { useEffect, useState,useContext, useRef } from 'react'
 import Appbar from '../../sharedComponent/Appbar'
 import Paper from '@mui/material/Paper'
 import Grid from '@mui/material/Grid'
@@ -13,12 +13,14 @@ import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
+import GoogleMapTracing from './GoogleMapTracing'
 // import Location from './Location'
 
 export default function Task() {
 
   const {user, setUser, isLoggedIn, setLog, setCookie} = useContext(AuthContext);
   const [data, setData] = useState('')
+
 
 
   useEffect(() => {
@@ -72,6 +74,7 @@ export default function Task() {
             )):<></>
 }
         </Grid>
+        <GoogleMapTracing />
         {/* <Location/> */}
       </Container>
     </div>
