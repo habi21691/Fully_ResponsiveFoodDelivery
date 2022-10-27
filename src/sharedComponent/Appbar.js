@@ -168,13 +168,13 @@ export default function Home() {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem className='menu' key={page.name} onClick={() => {
+                                <MenuItem  key={page.name} onClick={() => {
                                     navigator(page.link);
                                     handleCloseNavMenu();
                                 }
 
                                 }>
-                                    <Typography className='t' textAlign="center" textTransform={'none'}>{page.name}</Typography>
+                                    <Typography textAlign="center" textTransform={'none'}>{page.name}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>

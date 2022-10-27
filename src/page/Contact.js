@@ -21,6 +21,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import SendIcon from '@mui/icons-material/Send';
 import ResetTvIcon from '@mui/icons-material/ResetTv';
+import {Alert, Snackbar} from "@mui/material";
 
 
 const Schema = yup.object().shape({
@@ -41,6 +42,17 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function Contact() {
+   
+  const [open,setOpen] = useState(false)
+
+  function handleClose ()  {
+          setOpen(false)
+  }
+
+  function handleOpen () {
+    setOpen(true)
+  }
+
   const {
     register,
     handleSubmit,
@@ -72,7 +84,7 @@ function Contact() {
       data
     );
     if (status === 200) {
-      console.log(data);
+      handleOpen()
     }
   };
 
@@ -80,6 +92,21 @@ function Contact() {
     <div>
       <Appbar />
       <Box sx={{ width: "100%" }}>
+      <Snackbar
+          open={open}
+          onClose={
+            handleClose
+         }
+          autoHideDuration={2000}
+        >
+          <Alert
+            onClose={handleClose}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Message Sent!!
+          </Alert>
+        </Snackbar>
         <Grid container spacing={1}>
           <Grid item xs={12} md={6}>
             <img width={"100%"} pt={2} src={image} />
