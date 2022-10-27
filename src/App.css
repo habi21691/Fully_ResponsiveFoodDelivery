@@ -93,3 +93,21 @@
 #error{
   color: #FF2625;
 }
+.menu{
+  border-radius: 25px;
+  border: 0.1px solid #099FFF;
+  background-color: #181818;
+  box-shadow: 0 4px 8px 0 #00FFFF, 0 6px 20px 0 rgb(0, 0, 0, 0.19);
+}
+.t{
+  margin: auto;
+  color: #000;
+  font-size: 34px;
+  cursor:pointer;
+}
+.t:after{
+  display: block;
+}
+.t:hover:after{
+  transform:scaleX(1);
+}

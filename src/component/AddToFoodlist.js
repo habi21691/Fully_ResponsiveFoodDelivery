@@ -34,7 +34,7 @@ import { Card } from '@mui/material';
 //   display: 'none',
 // });
 
-export default function AddToFoodlist() {
+ function AddToFoodlist() {
 
 
 
@@ -182,3 +182,4 @@ export default function AddToFoodlist() {
     </div>
   )
 }
+export default AddToFoodlist;

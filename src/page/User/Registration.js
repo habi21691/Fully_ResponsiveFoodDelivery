@@ -30,7 +30,7 @@ const schema = yup.object().shape({
 
 
 
-export default function Registration() {
+function Registration() {
   const { user, setUser, isLoggedIn, setLog, setCookie } = useContext(
     AuthContext
   );
@@ -241,3 +241,4 @@ export default function Registration() {
     </div>
   );
 }
+export default Registration;

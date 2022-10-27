@@ -149,6 +149,7 @@ export default function Home() {
                             <MenuIcon />
                         </IconButton>
                         <Menu
+                       
                             id="menu-appbar"
                             anchorEl={anchorElNav}
                             anchorOrigin={{
@@ -167,13 +168,13 @@ export default function Home() {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page.name} onClick={() => {
+                                <MenuItem className='menu' key={page.name} onClick={() => {
                                     navigator(page.link);
                                     handleCloseNavMenu();
                                 }
 
                                 }>
-                                    <Typography textAlign="center" textTransform={'none'}>{page.name}</Typography>
+                                    <Typography className='t' textAlign="center" textTransform={'none'}>{page.name}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>

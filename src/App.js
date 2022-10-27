@@ -11,7 +11,6 @@ import UserSignin from './page/User/UserSignin'
 import AuthContext from './Contexts/AuthContext'
 import AddToFoodlist from './component/AddToFoodlist';
 import OrderView from './component/OrderView';
-import Order_receving from './page/Delivery_boy/Order_receving'
 import Task from './page/Delivery_boy/Task'
 import EmailSend from './component/EmailSend';
 import axios from 'axios';
@@ -62,7 +61,6 @@ function App() {
         {isLoggedIn ? (<Route path='/Contact' element={<Contact />} />) : (<></>)}
         {isLoggedIn ? (<Route path='/AddToFoodlist' element={<AddToFoodlist />} />) : (<></>)}
         {isLoggedIn ? (<Route path='/OrderView' element={<OrderView />} />) : (<></>)}
-        {isLoggedIn ? (<Route path='/Order_receving' element={<Order_receving />} />) : (<></>)}
         {isLoggedIn ? (<Route path='/Task' element={<Task/>} />) : (<></>)}
 
 

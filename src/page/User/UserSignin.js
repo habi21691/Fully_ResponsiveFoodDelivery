@@ -21,7 +21,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export default function Signin() {
+ function Signin() {
   const { user, setUser, isLoggedIn, setLog, setCookie } = useContext(
     AuthContext
   );
@@ -260,3 +260,4 @@ export default function Signin() {
     </div>
   );
 }
+export default Signin;

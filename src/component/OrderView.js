@@ -16,7 +16,7 @@ import TakeOrderFromCustomer from "./TakeOrderFromCustomer";
 import Payment from "./Payment";
 import GivingTaskForDelivry from "./GivingTaskForDelivery";
 
-export default function OrderView() {
+ function OrderView() {
   const [image, setImage] = React.useState("");
 
   const [data, setData] = useState([]);
@@ -261,3 +261,4 @@ export default function OrderView() {
     </div>
   );
 }
+export default OrderView;

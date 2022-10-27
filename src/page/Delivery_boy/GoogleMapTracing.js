@@ -15,22 +15,26 @@ import {
 const center = { lat: 50.064192, lng: -130.605469 };
 
 function GoogleMapTracing() {
-  const google = window.google
-  const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    libraries: ["places"],
-  });
-
+  
   const [map, setMap] = useState(/** @type google.maps.Map */ (null));
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
 
+
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    libraries: ["places"],
+  });
+
+
   const originRef = useRef()
   const destinationRef = useRef()
 
   if (!isLoaded) {
-    return <Typography />;
+    return <Typography> Map is not 
+      isLoaded
+    </Typography>;
   }
   async function calculateRoute() {
     if (originRef.current.value === "" || destinationRef.current.value === "") {
@@ -38,6 +42,7 @@ function GoogleMapTracing() {
     }
     // eslint-disable-next-line no-undef
     // const directionsService = new google.maps.DirectionsService();
+    const google = window.google || {}
     const directionsService = new google.maps.DirectionsService();
     const results = await directionsService.route({
       origin: originRef.current.value,
@@ -58,8 +63,8 @@ function GoogleMapTracing() {
     destinationRef.current.value = "";
   }
   return (
-    <
-      
+    <div
+      div
     >
       
       <Box position="relative"
@@ -70,23 +75,26 @@ function GoogleMapTracing() {
       <GoogleMap
           center={center}
           zoom={15}
+          // labelAnchor={new google.maps.Point(0, 0)}
           mapContainerStyle={{ width: '100%', height: '100%' }}
           options={{
             zoomControl: false,
             streetViewControl: false,
             mapTypeControl: false,
             fullscreenControl: false,
+            // zoomControlOptions: {
+            //   position: google.maps.ControlPosition.TOP_LEFT, // google is undefined here
+            // },
           }}
           onLoad={map => setMap(map)}
         >
           <Marker position={center} />
-          {directionsResponse && (
+          {/* {directionsResponse && (
             <DirectionsRenderer directions={directionsResponse} />
-          )}
+          )} */}
         </GoogleMap>
       </Box>
       <Box position="absolute" left={0} top={0}>
-        {/* const autocomplete = new google.maps.places.Autocomplete(input, options); */}
         <Box flexGrow={1}>
           <Autocomplete>
             <Input type="text" placeholder="Origin" ref={originRef} />
@@ -109,8 +117,8 @@ function GoogleMapTracing() {
           />
         </ButtonGroup>
       </Box>
-    </>
+    </div>
   );
 }
 
-export default GoogleMap;
+export default GoogleMapTracing;

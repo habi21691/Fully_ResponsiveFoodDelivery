@@ -2,7 +2,7 @@ import { TextField,Button } from "@mui/material";
 import React from "react";
 import Appbar from "../sharedComponent/Appbar";
 
-export default function EmailSend() {
+ function EmailSend() {
   const handleSubmit = async (event) => {
    event.preventDefault();
    const data = {
@@ -22,3 +22,4 @@ export default function EmailSend() {
     </div>
   );
 }
+export default EmailSend;

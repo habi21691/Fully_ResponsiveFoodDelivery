@@ -16,7 +16,7 @@ import Button from '@mui/material/Button'
 import GoogleMapTracing from './GoogleMapTracing'
 // import Location from './Location'
 
-export default function Task() {
+ function Task() {
 
   const {user, setUser, isLoggedIn, setLog, setCookie} = useContext(AuthContext);
   const [data, setData] = useState('')
@@ -80,3 +80,4 @@ export default function Task() {
     </div>
   )
 }
+export default Task;

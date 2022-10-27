@@ -130,7 +130,7 @@ const ImageData = [
 ];
 
 
-export default function Searchbar() {
+ function Searchbar() {
   // const options = [
   //     {
   //         value: 'chocolate',
@@ -381,3 +381,4 @@ const RightArrow = () => {
     </Fragment>
   );
 }
+export default Searchbar;

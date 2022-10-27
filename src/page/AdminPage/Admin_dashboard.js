@@ -7,7 +7,7 @@ import AuthContext from '../../Contexts/AuthContext';
 import image from '../../asset/she.webp'
 import image2 from '../../asset/adminPic.webp'
 
-export default function Admin_dashboard() {
+ function Admin_dashboard() {
   const { user, setUser, isLoggedIn, setLog } = useContext(AuthContext);
 
   const Item = styled(Paper)(({ theme }) => ({
@@ -55,3 +55,4 @@ export default function Admin_dashboard() {
     </div>
   )
 }
+export default Admin_dashboard;

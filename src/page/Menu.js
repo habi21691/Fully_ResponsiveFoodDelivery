@@ -97,7 +97,7 @@ const schema = yup.object().shape({
   // file: yup.file().required("file is required"),
 });
 
-export default function Menu() {
+function Menu() {
   // const submitForm = (data) => {
   //   console.log(data);
   // };
@@ -414,3 +414,4 @@ export default function Menu() {
     </div>
   );
 }
+export default Menu;
