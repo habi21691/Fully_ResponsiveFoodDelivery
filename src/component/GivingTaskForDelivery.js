@@ -4,6 +4,7 @@ import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material
 import {Button, Typography,Select,FormControl,InputLabel,MenuItem} from '@mui/material';
 import { pink } from '@mui/material/colors';
 import DirectionsBikeIcon from "@mui/icons-material/DirectionsBike";
+import {Snackbar, Alert} from '@mui/material';
 
 
 function GivingTaskForDelivry(props) {
@@ -15,7 +16,10 @@ function GivingTaskForDelivry(props) {
         await axios
           .post("http://localhost:5000/api/givingTask", data)
           .then((res) => {
-            console.log(res.data);
+            console.log(res.status);
+           if(res.status === 200){
+            props.setTakeOrderOpen(true)
+           }
             // handleClose();
           })
           .catch((err) => {
@@ -25,6 +29,22 @@ function GivingTaskForDelivry(props) {
   return (
     <>
 <Dialog open={props.openModal} onClose={props.handleClose}>
+<Snackbar
+          open={props.takeorderOpen}
+          onClose={() => {
+            props.handleClose();
+        
+          }}
+          autoHideDuration={2000}
+        >
+          <Alert
+            onClose={props.handleClose}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Successfully Ordered!!
+          </Alert>
+        </Snackbar>
           <DialogContent>
             <Typography>
               {" "}

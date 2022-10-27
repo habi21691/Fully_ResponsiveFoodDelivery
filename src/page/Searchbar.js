@@ -388,7 +388,7 @@ function Searchbar() {
               sx={{ p: 2 }}
               align="center"
               // component="h1"
-              gutterBottom> Payment</Typography>
+              gutterBottom>Easy Payment</Typography>
               </Grid>
             </Grid>
             <Grid item xs={12} md={6} mt={6}>

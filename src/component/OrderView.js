@@ -15,6 +15,7 @@ import EditingCustomerOrder from "./EditingCustomerOrder";
 import TakeOrderFromCustomer from "./TakeOrderFromCustomer";
 import Payment from "./Payment";
 import GivingTaskForDelivry from "./GivingTaskForDelivery";
+import DeleteOrder from "./DeleteOrder";
 
  function OrderView() {
   const [image, setImage] = React.useState("");
@@ -24,6 +25,12 @@ import GivingTaskForDelivry from "./GivingTaskForDelivery";
   const [isopenModal, setisOpenModal] = useState(false);
   const [modalofEdit, setModalofEdit] = useState(false);
   const [show, setShow] = useState(false);
+
+  const [openDeletemodal, setOpenDeleteModal] = useState(false);
+
+  function handleopenDelete () {
+    setOpenDeleteModal(true);
+  }
 
   const [einput, setEInput] = useState({
     name: "",
@@ -42,15 +49,17 @@ import GivingTaskForDelivry from "./GivingTaskForDelivery";
     console.log(image);
   }
 
-  const deleteUser = React.useCallback(
-    (_id) => () => {
-      console.log(_id);
-      setTimeout(() => {
-        axios.get("http://localhost:5000/api/deleteOrder/" + _id);
-      });
-    },
-    []
-  );
+  const [delete_id, setDelete_id] = useState('')
+
+       function deleteUser(_id)  {
+           setDelete_id({
+            ...delete_id,
+            _id: _id
+           })
+           setOpenDeleteModal(true)
+       }
+
+  
 
   function EditOrder(_id) {
     setEInput({
@@ -125,7 +134,7 @@ import GivingTaskForDelivry from "./GivingTaskForDelivery";
           <GridActionsCellItem
             icon={<DeleteIcon />}
             label="Delete"
-            onClick={deleteUser(params.row._id)}
+            onClick={(ev)=>{deleteUser(params.row._id)}}
           />,
           <GridActionsCellItem
             icon={<Edite />}
@@ -190,6 +199,7 @@ import GivingTaskForDelivry from "./GivingTaskForDelivery";
     setModalofEdit(false);
     setShow(false);
     setTakeOrderOpen(false);
+    setOpenDeleteModal(false)
   };
 
   return (
@@ -222,6 +232,14 @@ import GivingTaskForDelivry from "./GivingTaskForDelivery";
           image={image}
           setImage={setImage}
         />
+        <DeleteOrder
+         openDeletemodal={openDeletemodal}
+         setOpenDeleteModal={setOpenDeleteModal}
+         handleClose={handleClose}
+         delete_id={delete_id}
+         setDelete_id={setDelete_id}
+     
+        />
 
         <EditingCustomerOrder
           modalofEdit={modalofEdit}
@@ -229,6 +247,8 @@ import GivingTaskForDelivry from "./GivingTaskForDelivery";
           einput={einput}
           setModalofEdit={setModalofEdit}
           handleClose={handleClose}
+          takeorderOpen={takeorderOpen}
+          setTakeOrderOpen={setTakeOrderOpen}
         />
 
         <GivingTaskForDelivry
@@ -238,6 +258,8 @@ import GivingTaskForDelivry from "./GivingTaskForDelivery";
           setInput={setInput}
           data1={data1}
           setData1={setData1}
+          takeorderOpen={takeorderOpen}
+          setTakeOrderOpen={setTakeOrderOpen}
         />
 
       

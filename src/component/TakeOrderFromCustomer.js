@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import {Snackbar, Alert} from "@mui/material";
 import * as yup from "yup";
 import axios from "axios";
 import {
@@ -32,6 +33,7 @@ function TakeOrderFromCustomer(props) {
   const [name, setName] = useState("");
   const [phonenumber, setPhoneNuber] = useState("");
 
+  
   function onSubmit(data3) {
     console.log(data3);
     const data = {
@@ -42,13 +44,22 @@ function TakeOrderFromCustomer(props) {
       phonenumber: phonenumber,
     };
 
+    
+
     axios.post("http://localhost:5000/api/TakeOrdering", data).then((data) => {
       console.log(data);
       console.log(data.status);
       if (data.status === 200) {
-        //  prpos.TakingOrderByOperater();
+        props.setTakeOrderOpen(true)
       }
     });
+    setFullName('')
+    setAddress('')
+    setAmount('')
+    setName('')
+    setPhoneNuber('')
+
+   
   }
 
   const {
@@ -62,22 +73,22 @@ function TakeOrderFromCustomer(props) {
 
   return (
     <Dialog open={props.show} onClose={props.handleClose}>
-      {/* <Snackbar
-          open={takeorderOpen}
+      <Snackbar
+          open={props.takeorderOpen}
           onClose={() => {
-            handleClose();
+            props.handleClose();
         
           }}
           autoHideDuration={2000}
         >
           <Alert
-            onClose={handleClose}
+            onClose={props.handleClose}
             severity="success"
             sx={{ width: "100%" }}
           >
             Successfully Ordered!!
           </Alert>
-        </Snackbar> */}
+        </Snackbar>
       <DialogTitle>Take Order From the Customer</DialogTitle>
       <form onSubmit={handleSubmit(onSubmit)}>
         <DialogContent>

@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import {Snackbar, Alert} from "@mui/material";
 
 const Schema = yup.object().shape({
   name: yup.string().required("Food Name Require*"),
@@ -44,12 +45,32 @@ function EditingCustomerOrder(props) {
       })
       .then((data) => {
         console.log(data.data);
+        if(data.status === 200 ){
+          props.setTakeOrderOpen(true)
+        }
       });
+    
 
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Dialog open={props.modalofEdit} onClose={props.handleClose}>
+      <Snackbar
+          open={props.takeorderOpen}
+          onClose={() => {
+            props.handleClose();
+        
+          }}
+          autoHideDuration={2000}
+        >
+          <Alert
+            onClose={props.handleClose}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Updated Successfully!!
+          </Alert>
+        </Snackbar>
         <DialogTitle>Editign Customer Order </DialogTitle>
         <DialogContent>
           <TextField
