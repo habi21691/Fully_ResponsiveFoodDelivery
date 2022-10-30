@@ -79,7 +79,7 @@ import Location from './Location'
         </Grid>
       
       </Container>
-            <Map />
+            {/* <Map /> */}
          <Location/>
    
 

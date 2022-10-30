@@ -418,7 +418,7 @@ function Searchbar() {
               sx={{ p: 2 }}
               align="center"
               // component="h1"
-              gutterBottom>Fully Guranteed</Typography>
+              gutterBottom>Fully Guranted</Typography>
               </Grid>{" "}
             </Grid>
           </Grid>

@@ -8,7 +8,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea, CircularProgress, Snackbar } from "@mui/material";
+import { CardActionArea,Snackbar } from "@mui/material";
 import { Button } from "@mui/material";
 import AuthContext from "../Contexts/AuthContext";
 import Stack from "@mui/material/Stack";
@@ -22,7 +22,6 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import MuiAlert from "@mui/material/Alert";
 import Rate from "@mui/material/Rating";
-// import 'react-slideshow-image/dist/styles.css'
 import SimpleImageSlider from "react-simple-image-slider";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -81,9 +80,7 @@ const schema = yup.object().shape({
     .positive()
     .integer()
     .required("amount is required"),
-  // file: yup.array()
-  //      .nullable()
-  //      .required(' File_FIELD_REQUIRED')
+ 
   file: yup
     .mixed()
     .test("required", "You need to provide a file", (value) => {
@@ -94,13 +91,10 @@ const schema = yup.object().shape({
     })
     ,
 
-  // file: yup.file().required("file is required"),
 });
 
 function Menu() {
-  // const submitForm = (data) => {
-  //   console.log(data);
-  // };
+ 
   const { user, setUser, isLoggedIn, setLog, setCookie } = useContext(
     AuthContext
   );
@@ -112,7 +106,6 @@ function Menu() {
   const [price, setPrice] = useState(1);
   const [file, setFile] = useState(null);
   const [name, setName] = useState("");
-  // const [price , setPrice]  = useState()
   const [isSubmiting, setIsSubmiting] = useState(false);
 
   const [isopenModal, setisOpenModal] = useState(false);
@@ -130,7 +123,6 @@ function Menu() {
     setAmount(1);
     setFile("");
     setName("");
-    // setIsSubmiting(false)
   };
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
@@ -143,7 +135,6 @@ function Menu() {
   const handlePictureChange = (event) => {
     setFile(event.target.files[0]);
 
-    // setFileName(event.target.files[0].name)
   };
   const {
     register,
@@ -155,7 +146,6 @@ function Menu() {
   });
   const onSubmit = async (data1) => {
     console.log(data1);
-    // event.preventDefault();
     setIsSubmiting(true);
     setOpen(false);
 
@@ -182,27 +172,19 @@ function Menu() {
 
   const [data, setData] = useState([]);
   useEffect(() => {
-    // console.log(user)
     let getData = () => {
       axios
         .get("http://localhost:5000/api/uploadedProduct")
         .then((response) => {
-          // console.log(response)
           setData(response.data.product);
         });
     };
     getData();
-    // console.log(data)
   }, []);
-  // console.log(data)
   return (
     <div>
       <Appbar />
-      {/* <img
-        src={imagee}
-        width='100%'
-        height='auto'
-      /> */}
+     
       <SimpleImageSlider
         width={"100%"}
         autoPlay={true}
@@ -330,10 +312,7 @@ function Menu() {
               <input
                 {...register("file")}
                 type="file"
-                // accept="image/*"
-                // name="image"
-             
-                // hidden={true}
+              
                 onChange={handlePictureChange}
               />
             </>
@@ -345,7 +324,6 @@ function Menu() {
             </Button>
             <Button
               type="submit"
-              // onClick={handleSubmit(submitForm)}
               disabled={isSubmiting}
               style={{ display: "grid", placeItems: "center" }}
               variant="contained"
