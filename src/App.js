@@ -1,73 +1,88 @@
-import React, { useState, useEffect } from 'react';
-import { useCookies } from 'react-cookie'
+import React, { useState, useEffect, lazy, Suspense } from "react";
+import { useCookies } from "react-cookie";
 import { Route, Routes } from "react-router-dom";
-import Home from "./page/Searchbar";
-import Menu from './page/Menu';
-import Search from './page/Searchbar'
-import Admin_dashboard from './page/AdminPage/Admin_dashboard';
-import Contact from './page/Contact'
-import Registration from './page/User/Registration';
-import UserSignin from './page/User/UserSignin'
-import AuthContext from './Contexts/AuthContext'
-import AddToFoodlist from './component/AddToFoodlist';
-import OrderView from './component/OrderView';
-import Task from './page/Delivery_boy/Task'
-import EmailSend from './component/EmailSend';
-import axios from 'axios';
-import './App.css';
+
+import AuthContext from "./Contexts/AuthContext";
+
+import axios from "axios";
+import "./App.css";
+import { CircularProgress } from "@mui/material";
+
+const Registration = lazy(() => import("./page/User/Registration"));
+const UserSignin = lazy(() => import("./page/User/UserSignin"));
+const Search = lazy(() => import("./page/Searchbar"));
+const Task = lazy(() => import("./page/Delivery_boy/Task"));
+const Contact = lazy(() => import("./page/Contact"));
+const Admin_dashboard = lazy(() => import("./page/AdminPage/Admin_dashboard"));
+const Home = lazy(() => import("./page/Searchbar"));
+const Menu = lazy(() => import("./page/Menu"));
+const OrderView = lazy(() => import("./component/OrderView"));
+const AddToFoodlist = lazy( () => import('./component/AddToFoodlist'))
 
 function App() {
-
   const [user, setUser] = useState({});
   const [waiting, setWating] = useState(false);
   const [isLoggedIn, setLog] = useState(false);
 
-  const [cookies, setCookie] = useCookies(['token']);
+  const [cookies, setCookie] = useCookies(["token"]);
 
-  useEffect(() => { 
+  useEffect(() => {
     const auth = async () => {
-      if(!cookies.token){
+      if (!cookies.token) {
         return;
       }
-      await axios.get('http://localhost:5000/api/auth/' + cookies.token).then((data) => {
-        setLog(true)
-        setUser(data.data)
-        setWating(false)
-        // console.log(data.data)
-      })
-    }
-     auth();
-     
+      await axios
+        .get("http://localhost:5000/api/auth/" + cookies.token)
+        .then((data) => {
+          setLog(true);
+          setUser(data.data);
+          setWating(false);
+          // console.log(data.data)
+        });
+    };
+    auth();
+  }, []);
 
-  }, [])
+  return waiting ? (
+    <>you fucking idiot. fix it!</>
+  ) : (
+    <AuthContext.Provider
+      value={{ user, setUser, isLoggedIn, setLog, setCookie }}
+    >
+      <Suspense fallback={<CircularProgress className="circularProgress"/>}>
+        <Routes>
+          {!isLoggedIn ? (
+            <Route path="/Register" element={<Registration />} />
+          ) : (
+            <></>
+          )}
 
-  return waiting ? <>you fucking idiot. fix it!</> : (
-   
+          {!isLoggedIn ? <Route path="/" element={<UserSignin />} /> : <></>}
+          {/* {!isLoggedIn ? (<Route path='/EmailSend' element={<EmailSend/>} />) :(<></>)} */}
 
-    <AuthContext.Provider value={{ user, setUser, isLoggedIn, setLog, setCookie }}>
-      <Routes>
-
-        {!isLoggedIn ? (<Route path='/Register' element={<Registration />} />) : (<></>)}
-
-        {!isLoggedIn ? (<Route path='/' element={<UserSignin/>} />) : (<></>)}
-        {!isLoggedIn ? (<Route path='/EmailSend' element={<EmailSend/>} />) :(<></>)}
-
-
-
-        {isLoggedIn ? (<Route path='/searchbar' element={<Home />} />) : (<></>)}
-        {isLoggedIn ? (<Route path='/' element={<Search/>} />) : (<></>)}
-        {isLoggedIn ? (<Route path='/Menu' element={<Menu />} />) : (<></>)}
-        {isLoggedIn ? (<Route path='/Admin_dashboard' element={<Admin_dashboard />} />) : (<></>)}
-        {isLoggedIn ? (<Route path='/Contact' element={<Contact />} />) : (<></>)}
-        {isLoggedIn ? (<Route path='/AddToFoodlist' element={<AddToFoodlist />} />) : (<></>)}
-        {isLoggedIn ? (<Route path='/OrderView' element={<OrderView />} />) : (<></>)}
-        {isLoggedIn ? (<Route path='/Task' element={<Task/>} />) : (<></>)}
-
-
-      </Routes>
+          {isLoggedIn ? <Route path="/searchbar" element={<Home />} /> : <></>}
+          {isLoggedIn ? <Route path="/" element={<Search />} /> : <></>}
+          {isLoggedIn ? <Route path="/Menu" element={<Menu />} /> : <></>}
+          {isLoggedIn ? (
+            <Route path="/Admin_dashboard" element={<Admin_dashboard />} />
+          ) : (
+            <></>
+          )}
+          {isLoggedIn ? <Route path="/Contact" element={<Contact />} /> : <></>}
+          {isLoggedIn ? (
+            <Route path="/AddToFoodlist" element={<AddToFoodlist />} />
+          ) : (
+            <></>
+          )}
+          {isLoggedIn ? (
+            <Route path="/OrderView" element={<OrderView />} />
+          ) : (
+            <></>
+          )}
+          {isLoggedIn ? <Route path="/Task" element={<Task />} /> : <></>}
+        </Routes>
+      </Suspense>
     </AuthContext.Provider>
-  
-
   );
 }
 

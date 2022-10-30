@@ -177,7 +177,7 @@ function Registration() {
                   {...register("username")}
                   fullWidth
                   variant="standard"
-                  inputProps={{ maxLength: 15, minLength: 2 }}
+                  inputProps={{ maxLength: 10, minLength: 4 }}
                   label="User Name:"
                   type="text"
                   value={username}
@@ -193,6 +193,8 @@ function Registration() {
                   fullWidth
                   variant="standard"
                   label="Password:"
+                  inputProps={{ maxLength: 10, minLength: 4 }}
+
                   type="password"
                   value={password}
                   onChange={(event) => {

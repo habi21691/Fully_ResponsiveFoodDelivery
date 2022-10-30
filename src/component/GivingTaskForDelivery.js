@@ -42,7 +42,7 @@ function GivingTaskForDelivry(props) {
             severity="success"
             sx={{ width: "100%" }}
           >
-            Successfully Ordered!!
+            Successfully Asign TO the Delivery Boy!!
           </Alert>
         </Snackbar>
           <DialogContent>

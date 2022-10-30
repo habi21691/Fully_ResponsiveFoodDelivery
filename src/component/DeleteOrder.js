@@ -12,13 +12,16 @@ function DeleteOrder(props) {
 
   return (
     <>
+   
        <Dialog open={props.openDeletemodal} onClose={props.handleClose}>
       <DialogTitle>Are You Sure? You Want to Delete </DialogTitle>
+
       <DialogActions>
         <Button onClick={handleDelete} variant="outlined" color="error" >Delete</Button>
         <Button onClick={props.handleClose} variant="outlined" color="info">Cancel</Button>
       </DialogActions>
      </Dialog>
+    
     </>
   )
 }

@@ -183,6 +183,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                 <TextField
                   required
                   fullWidth
+                  inputProps={{maxLength:10, minLength:4}}
                   variant="standard"
                   value={username}
                   label="User Name:"
@@ -194,6 +195,8 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                 <TextField
                   required
                   fullWidth
+                  inputProps={{maxLength:10, minLength:4}}
+
                   variant="standard"
                   label="Password:"
                   value={password}
@@ -214,7 +217,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                     "Sign In"
                   )}
                 </Button>
-                <Link href="/EmailSend">Forgot Password?</Link>
+                <Link href="#">Forgot Password?</Link>
                 <Link underline="none" href="/Register" marginX={18}>
                   Register
                 </Link>

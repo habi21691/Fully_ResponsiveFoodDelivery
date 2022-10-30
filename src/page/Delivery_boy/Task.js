@@ -13,8 +13,9 @@ import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
-import GoogleMapTracing from './GoogleMapTracing'
-// import Location from './Location'
+import GoogleMapTracing from './Map'
+import Map from './Map'
+
 
  function Task() {
 
@@ -74,9 +75,12 @@ import GoogleMapTracing from './GoogleMapTracing'
             )):<></>
 }
         </Grid>
-        <GoogleMapTracing />
-        {/* <Location/> */}
+      
       </Container>
+            <Map />
+   
+
+      
     </div>
   )
 }
