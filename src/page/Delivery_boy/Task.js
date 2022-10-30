@@ -15,6 +15,7 @@ import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import GoogleMapTracing from './Map'
 import Map from './Map'
+import Location from './Location'
 
 
  function Task() {
@@ -39,6 +40,7 @@ import Map from './Map'
     <div>
       <Appbar/>
       <Container display='flex' justifyContent='center' sx={{ pt: 16 }}>
+        
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
           {data ? data.map((product, index) => (
             <Grid item xs={2} sm={4} md={4} key={index}>
@@ -78,6 +80,7 @@ import Map from './Map'
       
       </Container>
             <Map />
+         <Location/>
    
 
       
