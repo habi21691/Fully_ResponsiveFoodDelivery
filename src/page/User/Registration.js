@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import Avatar from "@mui/material/Avatar";
 import { red } from "@mui/material/colors";
@@ -9,9 +9,8 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import Link from "@mui/material/Link";
 import axios from "axios";
-import AuthContext from "../../Contexts/AuthContext";
 import MuiAlert from "@mui/material/Alert";
-import { CircularProgress, Stack } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import Snackbar from "@mui/material/Snackbar";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -31,9 +30,7 @@ const schema = yup.object().shape({
 
 
 function Registration() {
-  const { user, setUser, isLoggedIn, setLog, setCookie } = useContext(
-    AuthContext
-  );
+ 
 
   
   const [fullname, setFullName] = useState("");
@@ -58,8 +55,8 @@ function Registration() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    watch,
+    formState: { errors }
+  
   } = useForm({
     resolver: yupResolver(schema),
   });

@@ -1,22 +1,17 @@
 import React, { Fragment, useEffect, useState, useContext } from "react";
-// import SearchIcon from '@mui/icons-material/Search';
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import Image from "../asset/deliver.png";
 import Box from "@mui/material/Box";
 import { styled, alpha } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
-import Select from "react-select";
 import Appbar from "../sharedComponent/Appbar";
-import Paper from "@mui/material/Paper";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import Image2 from "../asset/11241416_4676729.jpg";
 import FoodImage from "../asset/food2.png";
 import { Typography } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
 import Typewriter from "typewriter-effect";
-import SimpleImageSlider from "react-simple-image-slider";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import HowToRegOutlinedIcon from "@mui/icons-material/HowToRegOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
@@ -47,15 +42,15 @@ const Search = styled("div")(({ theme }) => ({
   },
 }));
 
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
+// const SearchIconWrapper = styled("div")(({ theme }) => ({
+//   padding: theme.spacing(0, 2),
+//   height: "100%",
+//   position: "absolute",
+//   pointerEvents: "none",
+//   display: "flex",
+//   alignItems: "center",
+//   justifyContent: "center",
+// }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
@@ -74,17 +69,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-//   const MyComponent = () => (
-//         <Select   options={options}/>
-//   )
 
-// const Item = styled(Paper)(({ theme }) => ({
-//     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-//     ...theme.typography.body2,
-//     padding: theme.spacing(1),
-//     textAlign: 'center',
-//     color: theme.palette.text.secondary,
-// }));
 const ImageData = [
   {
     id: 1,
@@ -132,16 +117,7 @@ const ImageData = [
 ];
 
 function Searchbar() {
-  // const options = [
-  //     {
-  //         value: 'chocolate',
-  //         label: 'Chocolate',
-  //         link: '/menu'
-
-  //     },
-  //     { value: 'strawberry', label: 'Strawberry' },
-  //     { value: 'vanilla', label: 'Vanilla' }
-  // ]
+  
   const LeftArrow = () => {
     const { scrollPrev } = useContext(VisibilityContext);
 
@@ -219,18 +195,7 @@ function Searchbar() {
               }}
             />
           </div>
-          {/* <Typography
-            variant="h1"
-            component="h2"
-            mt={8}
-            textAlign='center'
-            textOverflow={true}
-            color='white'
-            onAnimationStart={true}
-          >
-            Fast Food Delivery Service
-          </Typography>
-           */}
+       
           <Typography mt={8}>
             <Typography variant="h4">
               <PhoneIcon sx={{ color: "primary", fontSize: 40 }} />
@@ -278,10 +243,7 @@ function Searchbar() {
                   })}
               </Search>
 
-              {/* {data.map( (value ,key) => (
-                              <Select key={key} options={value.name}/>
-                          ))}
-                           */}
+             
             </Grid>
             <Grid item xs={12} md={6}>
               <img
@@ -316,7 +278,7 @@ function Searchbar() {
             >
               <img src={item.img} className="img" height={200} width={220} />
             </Box>
-            // <img key={src} src={src.img} className="img" />
+          
           ))}
         </ScrollMenu>
 

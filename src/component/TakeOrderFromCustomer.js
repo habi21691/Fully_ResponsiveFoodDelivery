@@ -65,8 +65,8 @@ function TakeOrderFromCustomer(props) {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    watch,
+    formState: { errors }
+   
   } = useForm({
     resolver: yupResolver(Schema),
   });

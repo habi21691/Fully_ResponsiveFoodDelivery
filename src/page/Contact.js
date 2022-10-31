@@ -56,8 +56,8 @@ function Contact() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    watch,
+    formState: { errors }
+ 
   } = useForm({
     resolver: yupResolver(Schema),
   });
@@ -109,7 +109,7 @@ function Contact() {
         </Snackbar>
         <Grid container spacing={1}>
           <Grid item xs={12} md={6}>
-            <img width={"100%"} pt={2} src={image} />
+            <img width={"100%"} pt={2} src={image} alt={image} />
           </Grid>
           <Grid item xs={12} md={6}>
             <Typography

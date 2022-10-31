@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import Link from "@mui/material/Link";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AuthContext from "../../Contexts/AuthContext";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
@@ -40,13 +40,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
     setOpen(true);
   };
 
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpen(false);
-  };
+  
 
   const navigator = useNavigate();
 
@@ -77,6 +71,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
     handleClick();
     setOpenSnackbar(true);
     setError(true);
+    setProgress()
 
     const user = {
       username: username,

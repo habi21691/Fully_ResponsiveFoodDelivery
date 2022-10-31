@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Appbar from "../sharedComponent/Appbar";
 
 import Box from "@mui/material/Box";
@@ -10,13 +10,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea,Snackbar } from "@mui/material";
 import { Button } from "@mui/material";
-import AuthContext from "../Contexts/AuthContext";
 import Stack from "@mui/material/Stack";
 import Dialog from "@mui/material/Dialog";
 import TextField from "@mui/material/TextField";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
@@ -95,9 +93,7 @@ const schema = yup.object().shape({
 
 function Menu() {
  
-  const { user, setUser, isLoggedIn, setLog, setCookie } = useContext(
-    AuthContext
-  );
+ 
 
   const [fullname, setFullname] = useState("");
   const [address, setAddress] = useState("");
@@ -139,8 +135,8 @@ function Menu() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    watch,
+    formState: { errors }
+  
   } = useForm({
     resolver: yupResolver(schema),
   });

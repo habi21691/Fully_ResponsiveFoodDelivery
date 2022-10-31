@@ -17,7 +17,7 @@ import AuthContext from '../Contexts/AuthContext';
 
 export default function Home() {
 
-    const { user, isLoggedIn, setLog, setUser ,setCookie} = useContext(AuthContext);
+    const { user, setLog, setUser ,setCookie} = useContext(AuthContext);
 
  let pages = [];
  

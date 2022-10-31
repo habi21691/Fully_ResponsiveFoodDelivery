@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Appbar from "../sharedComponent/Appbar";
-import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
@@ -8,7 +7,6 @@ import Typography from "@mui/material/Typography";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
-import Input from "@mui/material/Input";
 import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -18,7 +16,6 @@ import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import Stack from "@mui/material/Stack";
 import axios from "axios";
-import { Card } from "@mui/material";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -61,7 +58,7 @@ function AddToFoodlist() {
     register,
     handleSubmit,
     formState:{ errors },
-    watch
+    
   } = useForm({
     resolver: yupResolver(Schema)
   })
@@ -77,7 +74,7 @@ function AddToFoodlist() {
     data.append("name", name);
     data.append("price", price);
 
-    const res = await axios
+     await axios
       .post("http://localhost:5000/api/imageUpload", data)
       .then((data) => {
         console.log(data);

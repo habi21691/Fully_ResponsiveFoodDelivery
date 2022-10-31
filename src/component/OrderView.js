@@ -28,9 +28,7 @@ import DeleteOrder from "./DeleteOrder";
 
   const [openDeletemodal, setOpenDeleteModal] = useState(false);
 
-  function handleopenDelete () {
-    setOpenDeleteModal(true);
-  }
+ 
 
   const [einput, setEInput] = useState({
     name: "",
@@ -182,9 +180,7 @@ import DeleteOrder from "./DeleteOrder";
   const TakingOrderByOperater = () => {
     setTakeOrderOpen(true);
   };
-  const handleChange = () => {
-    setOpenModal(true);
-  };
+  
 
   const selectOrder = (order_id) => {
     setInput({

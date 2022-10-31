@@ -1,26 +1,21 @@
 import { Card, CardActions } from '@mui/material'
 import { Container } from '@mui/system'
 import axios from 'axios'
-import React, { useEffect, useState,useContext, useRef } from 'react'
+import React, { useEffect, useState,useContext, } from 'react'
 import Appbar from '../../sharedComponent/Appbar'
-import Paper from '@mui/material/Paper'
 import Grid from '@mui/material/Grid'
-import Box from '@mui/material/Box'
 import CardContent from '@mui/material/CardContent'
-import { useNavigate } from 'react-router-dom'
 import AuthContext from '../../Contexts/AuthContext';
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
-import GoogleMapTracing from './Map'
-import Map from './Map'
 import Location from './Location'
 
 
  function Task() {
 
-  const {user, setUser, isLoggedIn, setLog, setCookie} = useContext(AuthContext);
+  const {user} = useContext(AuthContext);
   const [data, setData] = useState('')
 
 

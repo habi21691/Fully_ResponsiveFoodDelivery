@@ -8,7 +8,7 @@ import image from '../../asset/she.webp'
 import image2 from '../../asset/adminPic.webp'
 
  function Admin_dashboard() {
-  const { user, setUser, isLoggedIn, setLog } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -45,11 +45,7 @@ import image2 from '../../asset/adminPic.webp'
             src={image2}
           />
         </Grid>
-        {/* {Array.from(Array(6)).map((_, index) => (
-          <Grid item xs={2} sm={4} md={4} key={index}>
-            <Item>xs=2</Item>
-          </Grid>
-        ))} */}
+       
       </Grid>
 
     </div>
