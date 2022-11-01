@@ -40,7 +40,7 @@ function EditingCustomerOrder(props) {
       amount: props.einput.amount,
     };
     axios
-      .put("http://localhost:5000/api/EditingOrder/" + props.einput._id, {
+      .put("https://mernfood-delivery.onrender.com/api/EditingOrder/" + props.einput._id, {
         data,
       })
       .then((data) => {

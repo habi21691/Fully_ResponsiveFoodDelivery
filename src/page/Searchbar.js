@@ -42,15 +42,6 @@ const Search = styled("div")(({ theme }) => ({
   },
 }));
 
-// const SearchIconWrapper = styled("div")(({ theme }) => ({
-//   padding: theme.spacing(0, 2),
-//   height: "100%",
-//   position: "absolute",
-//   pointerEvents: "none",
-//   display: "flex",
-//   alignItems: "center",
-//   justifyContent: "center",
-// }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
@@ -141,7 +132,7 @@ function Searchbar() {
   const [search, setSearch] = useState("");
   useEffect(() => {
     let getData = () => {
-      axios.get("http://localhost:5000/api/featchinForSearch").then((data) => {
+      axios.get("https://mernfood-delivery.onrender.com/api/featchinForSearch").then((data) => {
         setData(data.data);
         console.log(data.data);
       });

@@ -41,7 +41,7 @@ import DeleteOrder from "./DeleteOrder";
   });
 
   function imageView(image) {
-    axios.get("http://localhost:5000/api/image/" + image);
+    axios.get("https://mernfood-delivery.onrender.com/api/image/" + image);
     setisOpenModal(true);
     setImage(image);
     console.log(image);
@@ -149,12 +149,12 @@ import DeleteOrder from "./DeleteOrder";
 
   useEffect(() => {
     const getData = () => {
-      axios.get("http://localhost:5000/api/feachingOrder").then((response) => {
+      axios.get("https://mernfood-delivery.onrender.com/feachingOrder").then((response) => {
         setData(response.data);
       });
     };
     const fetch = () => {
-      axios.get("http://localhost:5000/api/userCheck").then((res) => {
+      axios.get("https://mernfood-delivery.onrender.com/api/userCheck").then((res) => {
         setData1(res.data);
         // console.log(res.data)
       });

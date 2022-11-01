@@ -22,7 +22,7 @@ import Location from './Location'
 
   useEffect(() => {
     const fetchingTask = () => {
-      axios.get('http://localhost:5000/api/oderedTaskForDelivery/' +user.username).then((response) => {
+      axios.get('https://mernfood-delivery.onrender.com/api/oderedTaskForDelivery/' +user.username).then((response) => {
         console.log(response.data)
         setData(response.data);
        

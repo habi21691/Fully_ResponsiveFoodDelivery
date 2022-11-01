@@ -80,7 +80,7 @@ function Contact() {
     };
     // console.log(data)
     const { status } = await axios.post(
-      "http://localhost:5000/api/contact",
+      "https://mernfood-delivery.onrender.com/api/contact",
       data
     );
     if (status === 200) {

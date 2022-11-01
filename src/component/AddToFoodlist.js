@@ -75,7 +75,7 @@ function AddToFoodlist() {
     data.append("price", price);
 
      await axios
-      .post("http://localhost:5000/api/imageUpload", data)
+      .post("https://mernfood-delivery.onrender.com/api/imageUpload", data)
       .then((data) => {
         console.log(data);
         if( data.status === 200){

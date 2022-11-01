@@ -32,7 +32,7 @@ function App() {
         return;
       }
       await axios
-        .get("http://localhost:5000/api/auth/" + cookies.token)
+        .get("https://mernfood-delivery.onrender.com/api/auth/" + cookies.token)
         .then((data) => {
           setLog(true);
           setUser(data.data);

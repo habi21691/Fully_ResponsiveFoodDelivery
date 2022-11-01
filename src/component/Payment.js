@@ -8,7 +8,7 @@ function Payment(props) {
           <DialogContent>
             <DialogTitle>Payment in Mobile Banking</DialogTitle>
             <img
-              src={"http://localhost:5000/api/image/" + props.image}
+              src={"https://mernfood-delivery.onrender.com/api/image/" + props.image}
               alt='im'
               height="300"
               width="300"

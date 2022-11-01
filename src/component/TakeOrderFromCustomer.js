@@ -46,7 +46,7 @@ function TakeOrderFromCustomer(props) {
 
     
 
-    axios.post("http://localhost:5000/api/TakeOrdering", data).then((data) => {
+    axios.post("https://mernfood-delivery.onrender.com/api/TakeOrdering", data).then((data) => {
       console.log(data);
       console.log(data.status);
       if (data.status === 200) {

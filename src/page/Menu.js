@@ -154,7 +154,7 @@ function Menu() {
     data.append("name", name);
 
     const { status } = await axios.post(
-      "http://localhost:5000/api/Ordering",
+      "https://mernfood-delivery.onrender.com/api/Ordering",
       data
     );
 
@@ -170,7 +170,7 @@ function Menu() {
   useEffect(() => {
     let getData = () => {
       axios
-        .get("http://localhost:5000/api/uploadedProduct")
+        .get("https://mernfood-delivery.onrender.com/api/uploadedProduct")
         .then((response) => {
           setData(response.data.product);
         });
@@ -346,7 +346,7 @@ function Menu() {
                     <CardMedia
                       component="img"
                       height="140"
-                      image={"http://localhost:5000/api/image/" + product.image}
+                      image={"https://mernfood-delivery.onrender.com/api/image/" + product.image}
                       alt="green iguana"
                     />
 

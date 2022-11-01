@@ -6,7 +6,7 @@ function DeleteOrder(props) {
  
   function handleDelete (_id) {
     console.log(props.delete_id._id)
-    axios.get("http://localhost:5000/api/deleteOrder/" + props.delete_id._id);
+    axios.get("https://mernfood-delivery.onrender.com/api/deleteOrder/" + props.delete_id._id);
     props.handleClose()
   }
 

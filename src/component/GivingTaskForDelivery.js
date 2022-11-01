@@ -14,7 +14,7 @@ function GivingTaskForDelivry(props) {
           delivery_boy: props.input.delivery_boy,
         };
         await axios
-          .post("http://localhost:5000/api/givingTask", data)
+          .post("https://mernfood-delivery.onrender.com/api/givingTask", data)
           .then((res) => {
             console.log(res.status);
            if(res.status === 200){
