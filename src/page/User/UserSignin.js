@@ -103,13 +103,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
               setLog(true);
               navigator("/Task");
             } 
-            // else if (data.data.user.username === "dell") {
-            //   setUser(data.data.user);
-            //   setCookie("token", data.data.accessToken, { path: "/" });
-            //   setLog(true);
-  
-            //   navigator("/Task");
-            // }
+           
             }
 
           //---------------------------------
