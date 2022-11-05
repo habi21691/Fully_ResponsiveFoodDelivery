@@ -52,7 +52,7 @@ function App() {
       <Suspense fallback={<CircularProgress className="circularProgress"/>}>
         <Routes>
           {!isLoggedIn ? (
-            <Route path="/Register" element={<Registration />} />
+            <Route path="/" element={<Registration />} />
           ) : (
             <></>
           )}
