@@ -2,16 +2,11 @@
   background-image:url('./asset/food2.png');
   background-size: cover;
   width: '100%';
-  height: "auto";
+  height: "100vh";
   color: "#f5f5f5";
   margin-top: "3em";
   text-align: "center";
 }
-@media only screen and (max-width: 480px) {
-  .bg_Image  {
-  width: 100%;
-  }
-  }
 .typewriting{
   /* margin-top: 3em; */
   margin-top:1.5em;
@@ -94,6 +89,8 @@
   /* background-color: #1d1b1b; */
   background-size: cover;
   background-repeat: no-repeat;
+  width: 100%;
+  height: auto;
   
 }
 #error{
