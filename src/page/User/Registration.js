@@ -109,7 +109,7 @@ function Registration() {
         alignItems="center"
         justify="center"
         width={'100%'}
-        style={{ minHeight: "120vh" }}
+        style={{ minHeight: "100vh" }}
       >
         <Grid item xs={12}>
           <Paper
