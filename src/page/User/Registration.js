@@ -103,12 +103,12 @@ function Registration() {
   return (
     <div className="container">
       <Grid
-        // container
+        container
         spacing={0}
         direction="column"
         alignItems="center"
         justify="center"
-        // style={{ minHeight: "100vh" }}
+        style={{ minHeight: "70vh" }}
       >
         <Grid item xs={12}>
           <Paper
