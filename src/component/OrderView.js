@@ -149,7 +149,7 @@ import DeleteOrder from "./DeleteOrder";
 
   useEffect(() => {
     const getData = () => {
-      axios.get("https://mernfood-delivery.onrender.com/feachingOrder").then((response) => {
+      axios.get("https://mernfood-delivery.onrender.com/api/feachingOrder").then((response) => {
         setData(response.data);
       });
     };
