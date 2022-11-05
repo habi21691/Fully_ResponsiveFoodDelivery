@@ -207,7 +207,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                   )}
                 </Button>
                 <Link href="#">Forgot Password?</Link>
-                <Link underline="none" href="/" marginX={18}>
+                <Link underline="none" href="https://mernfooddelivery.netlify.app/Register" marginX={18}>
                   Register
                 </Link>
               </Box>
