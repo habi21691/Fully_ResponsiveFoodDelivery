@@ -8,8 +8,8 @@ import axios from "axios";
 import "./App.css";
 import { CircularProgress } from "@mui/material";
 
-
-const Registration = lazy(() => import("./page/User/Registration"));
+import Registration from './page/User/Registration'
+// const Registration = lazy(() => import("./page/User/Registration"));
 const UserSignin = lazy(() => import("./page/User/UserSignin"));
 const Search = lazy(() => import("./page/Searchbar"));
 const Task = lazy(() => import("./page/Delivery_boy/Task"));
