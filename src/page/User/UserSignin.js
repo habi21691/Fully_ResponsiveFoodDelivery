@@ -70,7 +70,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
     setIsSumbiting(true);
     handleClick();
     setOpenSnackbar(true);
-    setError(true);
+   
     setProgress()
 
     const user = {
@@ -83,7 +83,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
         console.log(data.data.message);
         if (data.status === 200) {
           console.log(error);
-       
+          setError(false);
           if (data.data.accessToken) {
             if (data.data.user.role === "User") {
               setUser(data.data.user);
@@ -131,7 +131,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
     setIsSumbiting(false);
     // setSuccess(false)
-    setError(false);
+
   };
 
   return (
@@ -215,7 +215,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                 </Link>
               </Box>
               <Stack>
-                {!error ? (
+                {error ? (
                   <Snackbar
                     open={openSnackbar}
                     autoHideDuration={700}
