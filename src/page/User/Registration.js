@@ -87,10 +87,10 @@ function Registration() {
       .then( (data) => {
        console.log(data.status)
         if (data.status === 200) {
-          setErr(true)
+          setErr(false)
         }
         else if(data.status === 500){
-          setErr(false)
+          setErr(true)
        
         }
 
@@ -176,7 +176,7 @@ function Registration() {
                   {...register("username")}
                   fullWidth
                   variant="standard"
-                  inputProps={{ maxLength: 10, minLength: 6 }}
+                  inputProps={{ maxLength: 14, minLength: 6 }}
                   label="User Name:"
                   type="text"
                   name='username'
