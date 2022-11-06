@@ -24,7 +24,7 @@ const schema = yup.object().shape({
   fullname: yup.string().required("Fullname Require *"),
   username: yup.string().required("Username Require * "),
   password: yup.string().required("Password Require *"),
-  phone_number: yup.string().required("PhoneNumber Require *"),
+  phone_number: yup.number().positive().integer().required("PhoneNumber Require *"),
 });
 
 
@@ -156,11 +156,12 @@ function Registration() {
                 </Typography>
                 <Box marginY={2} />
                 <TextField
+                  type="text"
+                  name="fullname"
                   {...register("fullname")}
                   fullWidth
                   variant="standard"
                   inputProps={{ maxLength: 30, minLength: 7 }}
-                  type="text"
                   label="Full Name:"
                   value={fullname}
                   onChange={(event) => {
@@ -178,6 +179,7 @@ function Registration() {
                   inputProps={{ maxLength: 10, minLength: 4 }}
                   label="User Name:"
                   type="text"
+                  name='username'
                   value={username}
                   onChange={(event) => {
                     setUserName(event.target.value);
@@ -192,7 +194,7 @@ function Registration() {
                   variant="standard"
                   label="Password:"
                   inputProps={{ maxLength: 10, minLength: 4 }}
-
+                  name='password'
                   type="password"
                   value={password}
                   onChange={(event) => {
