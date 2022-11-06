@@ -138,7 +138,7 @@ function Registration() {
                 </Typography>
                 <Box marginY={2} />
                 <TextField
-                  type="text"
+                 type={'text'}
                   name="fullname"
                   {...register("fullname")}
                   fullWidth
@@ -189,7 +189,8 @@ function Registration() {
                   {...register("phone_number")}
                   fullWidth
                   variant="standard"
-                  inputProps={{ maxLength: 10, minLength: 10 }}
+                  inputProps={{maxLength:10, minLength:10}}
+             
                   label="Phone_Number:"
                   type="number"
                   value={phone_number}
