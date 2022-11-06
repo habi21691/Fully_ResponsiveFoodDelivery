@@ -15,6 +15,7 @@ import Snackbar from "@mui/material/Snackbar";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { SettingsInputSvideoSharp } from "@mui/icons-material";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -87,8 +88,10 @@ function Registration() {
         console.log(data.status);
         if (data.status === 200) {
           setErr(true);
+          setIsSubmmiting(false)
         } else if (data.status === 500) {
           setErr(false);
+          setIsSubmmiting(false)
         }
       });
     setIsSubmmiting(false);
