@@ -14,7 +14,6 @@ import AuthContext from "../../Contexts/AuthContext";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { Stack } from "@mui/material";
-import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -31,7 +30,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 
 
-  const [error, setError] = useState(false);
+  const [error, setError] = this.state;
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
 
