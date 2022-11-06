@@ -21,7 +21,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 const schema = yup.object().shape({
-  fullname: yup.string()._type().required("Fullname Require *"),
+  fullname: yup.string().required("Fullname Require *"),
   username: yup.string().required("Username Require * "),
   password: yup.string().required("Password Require *"),
   phone_number: yup.string().required("PhoneNumber Require *"),
