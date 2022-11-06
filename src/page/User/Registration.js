@@ -42,7 +42,7 @@ function Registration() {
 
   const [open, setOpen] = useState(false);
 
-  const [err, setErr] = useState(true);
+  const [err, setErr] = useState(false);
   const handleClick = () => {
     setOpen(true);
   };
@@ -88,14 +88,9 @@ function Registration() {
         console.log(data.status);
         if (data.status === 200) {
           setErr(true);
-     
-          setIsSubmmiting(false);
-        } else if (data.status === 500) {
-          setErr(false);
-    
-          setIsSubmmiting(false);
         }
       });
+      setIsSubmmiting(false);
   };
 
   return (
