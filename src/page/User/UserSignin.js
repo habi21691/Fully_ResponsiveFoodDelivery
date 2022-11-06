@@ -111,7 +111,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
           // WANT TO CLOSE LOGIN DIALOG HERE;
           //---------------------------------
         } else if (data.status === 401) {
-          setError(false)
+         
           console.log("naughty naughty");
           // setMsg("User Error")
           //---------------------------------
@@ -119,7 +119,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
           //---------------------------------
         } else if (data.status === 502) {
           console.log("off it's hinges, innit");
-          setError(true)
+          
         } else {
           console.log("sumat went bang");
         }
