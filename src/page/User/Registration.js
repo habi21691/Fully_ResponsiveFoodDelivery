@@ -24,15 +24,14 @@ const schema = yup.object().shape({
   fullname: yup.string().required("Fullname Require *"),
   username: yup.string().required("Username Require * "),
   password: yup.string().required("Password Require *"),
-  phone_number: yup.number().positive().integer().required("PhoneNumber Require *"),
+  phone_number: yup
+    .number()
+    .positive()
+    .integer()
+    .required("PhoneNumber Require *"),
 });
 
-
-
 function Registration() {
- 
-
-  
   const [fullname, setFullName] = useState("");
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -46,17 +45,15 @@ function Registration() {
   const handleClick = () => {
     setOpen(true);
   };
-  
+
   const closeSnackbar = () => {
     setOpen(false);
-  
   };
 
   const {
     register,
     handleSubmit,
-    formState: { errors }
-  
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -65,7 +62,7 @@ function Registration() {
     console.log(data1);
     handleClick();
     setIsSubmmiting(true);
-    setErr(false)
+    // setErr(false)
 
     const data = {
       fullname: fullname,
@@ -84,19 +81,16 @@ function Registration() {
     //   setIsSubmmiting(false)
     // }
 
-     await axios
+    await axios
       .post("https://mernfood-delivery.onrender.com/api/Register", data)
-      .then( (data) => {
-       console.log(data.status)
+      .then((data) => {
+        console.log(data.status);
         if (data.status === 200) {
-          setErr(true)
+          setErr(true);
+        } else if (data.status === 500) {
+          setErr(false);
         }
-        else if(data.status === 500){
-          setErr(false)
-       
-        }
-
-      })
+      });
     setIsSubmmiting(false);
   };
 
@@ -108,7 +102,7 @@ function Registration() {
         direction="column"
         alignItems="center"
         justify="center"
-        width={'100%'}
+        width={"100%"}
         style={{ minHeight: "100vh" }}
       >
         <Grid item xs={12}>
@@ -128,29 +122,32 @@ function Registration() {
                 bgcolor: red[500],
               }}
             ></Avatar>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <Box>
-                {!err ? (
+            <Box>
+              {!err ? (
                 <Snackbar
                   open={open}
                   autoHideDuration={300}
                   onClose={closeSnackbar}
                   anchorOrigin={{ vertical: "top", horizontal: "center" }}
                 >
-                  <Alert severity="success">Hello {username},Successfully Register!</Alert>
+                  <Alert severity="success">
+                    Hello {username},Successfully Register!
+                  </Alert>
                 </Snackbar>
-                ):(
+              ) : (
                 <Snackbar
-                    open={open}
-                    onClose={closeSnackbar}
-                    anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                  >
-                    <Alert onClose={closeSnackbar} severity="error">
-                      Oops! <strong>{username}</strong>Already Exist,try again later.
-                      
-                    </Alert>
-                  </Snackbar>)}
+                  open={open}
+                  onClose={closeSnackbar}
+                  anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                >
+                  <Alert onClose={closeSnackbar} severity="error">
+                    Oops! <strong>{username}</strong>Already Exist,try again
+                    later.
+                  </Alert>
+                </Snackbar>
+              )}
 
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <Typography textAlign={"center"} fontSize={"2em"}>
                   Registration Form
                 </Typography>
@@ -179,7 +176,7 @@ function Registration() {
                   inputProps={{ maxLength: 14, minLength: 6 }}
                   label="User Name:"
                   type="text"
-                  name='username'
+                  name="username"
                   value={username}
                   onChange={(event) => {
                     setUserName(event.target.value);
@@ -194,7 +191,7 @@ function Registration() {
                   variant="standard"
                   label="Password:"
                   inputProps={{ maxLength: 6, minLength: 6 }}
-                  name='password'
+                  name="password"
                   type="password"
                   value={password}
                   onChange={(event) => {
@@ -235,8 +232,8 @@ function Registration() {
                 <Link marginX={26} underline="none" href="/">
                   Login
                 </Link>
-              </Box>
             </form>
+              </Box>
           </Paper>
         </Grid>
       </Grid>
