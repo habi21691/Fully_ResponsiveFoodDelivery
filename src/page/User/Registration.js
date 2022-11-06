@@ -92,7 +92,7 @@ function Registration() {
   
         }
         else if(data.status === 500){
-          setErr(fasle)
+          setErr(false)
         }
       });
       setIsSubmmiting(false);
