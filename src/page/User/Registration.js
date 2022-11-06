@@ -42,7 +42,7 @@ function Registration() {
 
   const [open, setOpen] = useState(false);
 
-  const [err, setErr] = useState(false);
+  const [err, setErr] = useState(true);
   const handleClick = () => {
     setOpen(true);
   };
@@ -61,8 +61,8 @@ function Registration() {
 
   const onSubmit = async (data1) => {
     console.log(data1);
-    handleClick();
     setIsSubmmiting(true);
+    handleClick();
     // setErr(false)
 
     const data = {
@@ -87,11 +87,11 @@ function Registration() {
       .then((data) => {
         console.log(data.status);
         if (data.status === 200) {
-          setErr(true);
-          setIsSubmmiting(false)
-        } else if (data.status === 500) {
           setErr(false);
-          setIsSubmmiting(false)
+     
+        } else if (data.status === 500) {
+          setErr(true);
+    
         }
       });
     setIsSubmmiting(false);
@@ -126,30 +126,7 @@ function Registration() {
               }}
             ></Avatar>
             <Box>
-              {err ? (
-                <Snackbar
-                  open={open}
-                  autoHideDuration={300}
-                  onClose={closeSnackbar}
-                  anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                >
-                  <Alert severity="success">
-                    Hello {username},Successfully Register!
-                  </Alert>
-                </Snackbar>
-              ) : (
-                <Snackbar
-                  open={open}
-                  onClose={closeSnackbar}
-                  anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                >
-                  <Alert onClose={closeSnackbar} severity="error">
-                    Oops! <strong>{username}</strong>Already Exist,try again
-                    later.
-                  </Alert>
-                </Snackbar>
-              )}
-
+              
               <form onSubmit={handleSubmit(onSubmit)}>
                 <Typography textAlign={"center"} fontSize={"2em"}>
                   Registration Form
@@ -202,7 +179,6 @@ function Registration() {
                   }}
                 />
                 {errors.password && <p id="error">{errors.password.message}</p>}
-
                 <Box marginY={2} />
                 <TextField
                   {...register("phone_number")}
@@ -236,6 +212,30 @@ function Registration() {
                   Login
                 </Link>
             </form>
+            {err ? (
+                <Snackbar
+                  open={open}
+                  autoHideDuration={300}
+                  onClose={closeSnackbar}
+                  anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                >
+                  <Alert severity="success">
+                    Hello {username},Successfully Register!
+                  </Alert>
+                </Snackbar>
+              ) : (
+                <Snackbar
+                  open={open}
+                  onClose={closeSnackbar}
+                  anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                >
+                  <Alert onClose={closeSnackbar} severity="error">
+                    Oops! <strong>{username}</strong>Already Exist,try again
+                    later.
+                  </Alert>
+                </Snackbar>
+              )}
+
               </Box>
           </Paper>
         </Grid>
