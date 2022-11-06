@@ -30,7 +30,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 
 
-  const [error, setError] = this.state;
+  const [error, setError] = useState(true);
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
 
@@ -76,7 +76,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
     await axios
       .post("https://mernfood-delivery.onrender.com/api/Signin", user)
       .then((data) => {
-        console.log(data.data.message);
+        console.log(data.data.status);
         if (data.status === 200) {
           console.log(error);
           setError(true);
@@ -128,7 +128,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
     setIsSumbiting(false);
     // setSuccess(false)
-    setError(false);
+   
   };
 
   return (
