@@ -65,7 +65,7 @@ function Registration() {
     console.log(data1);
     handleClick();
     setIsSubmmiting(true);
-    // setErr(false)
+    setErr(false)
 
     const data = {
       fullname: fullname,
@@ -78,11 +78,11 @@ function Registration() {
     if (fullname.length <= 3) {
       console.log("fullname must be less than 4");
     }
-    else if(data.username === username){
-      // openBadSnack()
-      // setErr(true);
-      setIsSubmmiting(false)
-    }
+    // else if(data.username === username){
+    //   // openBadSnack()
+    //   setErr(true);
+    //   setIsSubmmiting(false)
+    // }
 
      await axios
       .post("https://mernfood-delivery.onrender.com/api/Register", data)
