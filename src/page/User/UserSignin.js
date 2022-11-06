@@ -30,9 +30,9 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 
 
-  // const [error, setError] = useState(false);
+  const [error, setError] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
-  const [opensuccess, setSuccess ] = useState(false)
+
 
 
 
@@ -66,7 +66,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
     setIsSumbiting(true);
  
   
-    
+    setOpenSnackbar(true);
    
 
 
@@ -74,13 +74,14 @@ const Alert = React.forwardRef(function Alert(props, ref) {
       username: username,
       password: password,
     };
-    await axios
+    const {res} = await axios
       .post("https://mernfood-delivery.onrender.com/api/Signin", user)
       .then((data) => {
+        console.log(res.status)
         console.log(data.status);
         if (data.status === 200) {
-          setOpenSnackbar(true)
         
+          console.log(error);
           if (data.data.accessToken) {
             if (data.data.user.role === "User") {
               setUser(data.data.user);
@@ -108,7 +109,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
           // WANT TO CLOSE LOGIN DIALOG HERE;
           //---------------------------------
         } else if (data.status === 404) {
-          setSuccess(true)
+          setError(true)
           console.log("naughty naughty");
           // setMsg("User Error")
         
@@ -130,7 +131,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
     setIsSumbiting(false);
     // setSuccess(false)
- 
+    setError(false);
   };
 
   return (
@@ -214,7 +215,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                 </Link>
               </Box>
               <Stack>
-               
+                {error ? (
                   <Snackbar
                     open={openSnackbar}
                     autoHideDuration={700}
@@ -225,9 +226,9 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                       Hi {username},Successfuly Logged !!!
                     </Alert>
                   </Snackbar>
-              
+                ) : (
                   <Snackbar
-                    open={opensuccess}
+                    open={openSnackbar}
                     onClose={closeSnackbar}
                     anchorOrigin={{ vertical: "top", horizontal: "center" }}
                   >
@@ -235,7 +236,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                       Oops! Something went wrong,try again later.
                     </Alert>
                   </Snackbar>
-              
+                )}
               
               </Stack>
             </form>
