@@ -130,7 +130,7 @@ function Registration() {
             ></Avatar>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Box>
-                {err ? (
+                {!err ? (
                 <Snackbar
                   open={open}
                   autoHideDuration={300}
