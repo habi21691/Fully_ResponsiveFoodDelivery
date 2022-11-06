@@ -65,7 +65,7 @@ function Registration() {
     console.log(data1);
     handleClick();
     setIsSubmmiting(true);
-    // setErr(false)
+    setErr(false)
 
     const data = {
       fullname: fullname,
@@ -97,8 +97,6 @@ function Registration() {
         }
 
       })
-    
-
     setIsSubmmiting(false);
   };
 
@@ -132,7 +130,7 @@ function Registration() {
             ></Avatar>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Box>
-                {err ? (
+                {!err ? (
                 <Snackbar
                   open={open}
                   autoHideDuration={300}
