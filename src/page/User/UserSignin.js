@@ -78,7 +78,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
       .then((data) => {
         console.log(data.status);
         if (data.status === 200) {
-          setError(true);
+        
           console.log(error);
           if (data.data.accessToken) {
             if (data.data.user.role === "User") {
@@ -129,7 +129,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
     setIsSumbiting(false);
     // setSuccess(false)
-   
+    setError(true);
   };
 
   return (
