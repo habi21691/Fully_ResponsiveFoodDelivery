@@ -110,14 +110,15 @@ const Alert = React.forwardRef(function Alert(props, ref) {
          
           console.log("naughty naughty");
           // setMsg("User Error")
+          setError(false)
           //---------------------------------
           // WANT TO DISPLAY SNACKBAR HERE
           //---------------------------------
         } else if (data.status === 502) {
           console.log("off it's hinges, innit");
-          
+          setError(false)
         } else {
-          console.log(error)
+          setError(false)
           console.log("sumat went bang");
         }
       })
