@@ -130,7 +130,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
     setIsSumbiting(false);
     // setSuccess(false)
-    setSuccess(false)
+    setSuccess(true)
   };
 
   return (
