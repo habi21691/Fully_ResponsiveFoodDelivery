@@ -64,7 +64,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsSumbiting(true);
-    setError(true)
+ 
   
     setOpenSnackbar(true);
    
@@ -79,8 +79,8 @@ const Alert = React.forwardRef(function Alert(props, ref) {
       .then((data) => {
         console.log(data.status);
         if (data.status === 200) {
-        
-          console.log(error);
+          setError(false)
+          console.log(setError(false));
           if (data.data.accessToken) {
             if (data.data.user.role === "User") {
               setUser(data.data.user);
@@ -107,8 +107,8 @@ const Alert = React.forwardRef(function Alert(props, ref) {
           //---------------------------------
           // WANT TO CLOSE LOGIN DIALOG HERE;
           //---------------------------------
-        } else if (data.status === 401) {
-         
+        } else if (data.status === 404) {
+          setError(true)
           console.log("naughty naughty");
           // setMsg("User Error")
         
