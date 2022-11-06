@@ -83,7 +83,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
         console.log(data.data.message);
         if (data.status === 200) {
           console.log(error);
-          setError(false)
+       
           if (data.data.accessToken) {
             if (data.data.user.role === "User") {
               setUser(data.data.user);
