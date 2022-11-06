@@ -108,7 +108,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
           // WANT TO CLOSE LOGIN DIALOG HERE;
           //---------------------------------
         } else if (data.status === 404) {
-           setSuccess(false)
+       
           console.log("naughty naughty");
           // setMsg("User Error")
         
@@ -130,7 +130,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
     setIsSumbiting(false);
     // setSuccess(false)
-   
+    setSuccess(false)
   };
 
   return (
