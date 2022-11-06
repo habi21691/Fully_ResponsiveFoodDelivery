@@ -122,8 +122,8 @@ const Alert = React.forwardRef(function Alert(props, ref) {
         }
       })
       .catch((err, data) => {
-        console.log(err);
-        console.log(error);
+        setError(false)
+        
       });
 
     setIsSumbiting(false);
