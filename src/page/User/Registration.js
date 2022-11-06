@@ -89,11 +89,11 @@ function Registration() {
         console.log(data.status);
         if (data.status === 200) {
           setErr(true);
-          return;
+  
         }
       });
       setIsSubmmiting(false);
-      setErr(false)
+     
   };
 
   return (
