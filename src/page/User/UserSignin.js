@@ -76,6 +76,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
     await axios
       .post("https://mernfood-delivery.onrender.com/api/Signin", user)
       .then((data) => {
+        setError(true)
         console.log(data.status);
         if (data.status === 200) {
         
@@ -110,20 +111,20 @@ const Alert = React.forwardRef(function Alert(props, ref) {
          
           console.log("naughty naughty");
           // setMsg("User Error")
-          setError(false)
+        
           //---------------------------------
           // WANT TO DISPLAY SNACKBAR HERE
           //---------------------------------
         } else if (data.status === 502) {
           console.log("off it's hinges, innit");
-          setError(false)
+          
         } else {
-          setError(false)
+       
           console.log("sumat went bang");
         }
       })
       .catch((err, data) => {
-        setError(false)
+     
         
       });
 
