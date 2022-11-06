@@ -87,14 +87,15 @@ function Registration() {
       .then((data) => {
         console.log(data.status);
         if (data.status === 200) {
-          setErr(false);
-     
-        } else if (data.status === 500) {
           setErr(true);
+     
+          setIsSubmmiting(false);
+        } else if (data.status === 500) {
+          setErr(false);
     
+          setIsSubmmiting(false);
         }
       });
-    setIsSubmmiting(false);
   };
 
   return (
