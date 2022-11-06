@@ -62,7 +62,7 @@ function Registration() {
   const onSubmit = async (data1) => {
     console.log(data1);
     setIsSubmmiting(true);
-    handleClick();
+    
     // setErr(false)
 
     const data = {
@@ -85,6 +85,7 @@ function Registration() {
     await axios
       .post("https://mernfood-delivery.onrender.com/api/Register", data)
       .then((data) => {
+        handleClick();
         console.log(data.status);
         if (data.status === 200) {
           setErr(true);
