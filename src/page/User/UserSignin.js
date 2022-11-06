@@ -66,7 +66,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
     setIsSumbiting(true);
  
   
-    setOpenSnackbar(true);
+    
    
 
 
