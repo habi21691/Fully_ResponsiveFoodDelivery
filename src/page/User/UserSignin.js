@@ -121,6 +121,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
           console.log("off it's hinges, innit");
           
         } else {
+          console.log(error)
           console.log("sumat went bang");
         }
       })
