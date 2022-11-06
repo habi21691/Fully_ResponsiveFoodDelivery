@@ -30,7 +30,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 
 
-  const [error, setError] = useState(true);
+  const [error, setError] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
 
@@ -78,8 +78,8 @@ const Alert = React.forwardRef(function Alert(props, ref) {
       .then((data) => {
         console.log(data.data.status);
         if (data.status === 200) {
-          console.log(error);
           setError(true);
+          console.log(error);
           if (data.data.accessToken) {
             if (data.data.user.role === "User") {
               setUser(data.data.user);
@@ -213,7 +213,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                 </Link>
               </Box>
               <Stack>
-                {!error ? (
+                {error ? (
                   <Snackbar
                     open={openSnackbar}
                     autoHideDuration={700}
