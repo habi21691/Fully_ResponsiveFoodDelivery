@@ -83,7 +83,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
         console.log(data.data.message);
         if (data.status === 200) {
           console.log(error);
-          setError(true)
+          setError(false)
           if (data.data.accessToken) {
             if (data.data.user.role === "User") {
               setUser(data.data.user);
@@ -111,6 +111,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
           // WANT TO CLOSE LOGIN DIALOG HERE;
           //---------------------------------
         } else if (data.status === 401) {
+          setError(false)
           console.log("naughty naughty");
           // setMsg("User Error")
           //---------------------------------
@@ -118,6 +119,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
           //---------------------------------
         } else if (data.status === 502) {
           console.log("off it's hinges, innit");
+          setError(true)
         } else {
           console.log("sumat went bang");
         }
@@ -213,7 +215,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                 </Link>
               </Box>
               <Stack>
-                {error ? (
+                {!error ? (
                   <Snackbar
                     open={openSnackbar}
                     autoHideDuration={700}
