@@ -88,11 +88,11 @@ function Registration() {
       .then((data) => {
         console.log(data.status);
         if (data.status === 200) {
-          setErr(false);
+          setErr(true);
   
         }
         else if(data.status === 500){
-          setErr(true)
+          setErr(false)
         }
       });
       setIsSubmmiting(false);
