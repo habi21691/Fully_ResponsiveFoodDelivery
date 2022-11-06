@@ -126,7 +126,7 @@ function Registration() {
               }}
             ></Avatar>
             <Box>
-              {!err ? (
+              {err ? (
                 <Snackbar
                   open={open}
                   autoHideDuration={300}
