@@ -78,7 +78,7 @@ function Registration() {
     }
     else if(data.username === username){
       // openBadSnack()
-      setErr(false);
+      setErr(true);
       setIsSubmmiting(false)
     }
 
