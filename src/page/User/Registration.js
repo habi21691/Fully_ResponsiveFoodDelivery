@@ -73,6 +73,8 @@ function Registration() {
       password: password,
       phone_number: phone_number,
     };
+    console.log(data.username)
+    console.log(username)
     if (fullname.length <= 3) {
       console.log("fullname must be less than 4");
     }
