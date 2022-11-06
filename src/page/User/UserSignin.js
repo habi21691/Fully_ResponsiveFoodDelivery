@@ -64,6 +64,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsSumbiting(true);
+    setError(true)
   
     setOpenSnackbar(true);
    
@@ -76,7 +77,6 @@ const Alert = React.forwardRef(function Alert(props, ref) {
     await axios
       .post("https://mernfood-delivery.onrender.com/api/Signin", user)
       .then((data) => {
-        setError(true)
         console.log(data.status);
         if (data.status === 200) {
         
