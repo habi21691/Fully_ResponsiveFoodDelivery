@@ -28,17 +28,14 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [isSubmmiting, setIsSumbiting] = useState(false);
-  const [open, setOpen] = useState(false);
+
 
 
   const [error, setError] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
-  const [progress, setProgress] = React.useState(0);
 
-  const handleClick = () => {
-    setOpen(true);
-  };
+
 
   
 
@@ -68,10 +65,10 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsSumbiting(true);
-    handleClick();
+  
     setOpenSnackbar(true);
    
-    setProgress()
+
 
     const user = {
       username: username,
@@ -83,7 +80,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
         console.log(data.data.message);
         if (data.status === 200) {
           console.log(error);
-          setError(false);
+          setError(true);
           if (data.data.accessToken) {
             if (data.data.user.role === "User") {
               setUser(data.data.user);
@@ -238,16 +235,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                     </Alert>
                   </Snackbar>
                 )}
-                <Backdrop
-                  open={isSubmmiting}
-                  sx={{ zIndex: (theme) => theme.zIndex.modal + 1 }}
-                >
-                  <CircularProgress
-                    sx={{ color: "white" }}
-                    variant="determinate"
-                    value={progress}
-                  />
-                </Backdrop>
+              
               </Stack>
             </form>
           </Paper>
