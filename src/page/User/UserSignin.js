@@ -74,11 +74,10 @@ const Alert = React.forwardRef(function Alert(props, ref) {
       username: username,
       password: password,
     };
-    const {res} = await axios
+    await axios
       .post("https://mernfood-delivery.onrender.com/api/Signin", user)
       .then((data) => {
-       
-        console.log(res.data.status);
+        console.log(data.status);
         if (data.status === 200) {
         
           console.log(error);
