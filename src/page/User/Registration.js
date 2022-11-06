@@ -82,18 +82,16 @@ function Registration() {
     //   setIsSubmmiting(false)
     // }
 
-    handleClick();
     await axios
-      .post("https://mernfood-delivery.onrender.com/api/Register", data)
-      .then((data) => {
-        console.log(data.status);
-        if (data.status === 200) {
-          setErr(true);
+    .post("https://mernfood-delivery.onrender.com/api/Register", data)
+    .then((data) => {
+      console.log(data.status);
+      if (data.status === 200) {
+        setErr(true);
+        handleClick();
   
         }
-        else if(data.status === 500){
-          setErr(false)
-        }
+      
       });
       setIsSubmmiting(false);
      
