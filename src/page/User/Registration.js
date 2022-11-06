@@ -73,14 +73,14 @@ function Registration() {
       password: password,
       phone_number: phone_number,
     };
-    console.log(data.username)
-    console.log(username)
+    // console.log(data.username)
+    // console.log(username)
     if (fullname.length <= 3) {
       console.log("fullname must be less than 4");
     }
     else if(data.username === username){
       // openBadSnack()
-      setErr(true);
+      // setErr(true);
       setIsSubmmiting(false)
     }
 
