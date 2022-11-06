@@ -175,7 +175,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                 <TextField
                   required
                   fullWidth
-                  inputProps={{maxLength:14, minLength:6}}
+                  inputProps={{maxLength:14, minLength:4}}
                   variant="standard"
                   value={username}
                   label="User Name:"
