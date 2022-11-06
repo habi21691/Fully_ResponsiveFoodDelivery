@@ -76,7 +76,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
     await axios
       .post("https://mernfood-delivery.onrender.com/api/Signin", user)
       .then((data) => {
-        console.log(data.data.status);
+        console.log(data.status);
         if (data.status === 200) {
           setError(true);
           console.log(error);

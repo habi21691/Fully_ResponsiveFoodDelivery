@@ -86,6 +86,7 @@ function Registration() {
     await axios
     .post("https://mernfood-delivery.onrender.com/api/Register", data)
     .then((data) => {
+      console.log(data.status)
       console.log(data.status);
       if (data.status === 200) {
         console.log(err)
