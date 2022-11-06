@@ -176,7 +176,7 @@ function Registration() {
                   {...register("username")}
                   fullWidth
                   variant="standard"
-                  inputProps={{ maxLength: 10, minLength: 4 }}
+                  inputProps={{ maxLength: 10, minLength: 6 }}
                   label="User Name:"
                   type="text"
                   name='username'
@@ -193,7 +193,7 @@ function Registration() {
                   fullWidth
                   variant="standard"
                   label="Password:"
-                  inputProps={{ maxLength: 10, minLength: 4 }}
+                  inputProps={{ maxLength: 6, minLength: 6 }}
                   name='password'
                   type="password"
                   value={password}
