@@ -43,9 +43,7 @@ function Registration() {
   const [open, setOpen] = useState(false);
 
   const [err, setErr] = useState(false);
-  const handleClick = () => {
-    setOpen(true);
-  };
+  
 
   const closeSnackbar = () => {
     setOpen(false);
@@ -62,7 +60,7 @@ function Registration() {
   const onSubmit = async (data1) => {
     console.log(data1);
     setIsSubmmiting(true);
-    
+    setOpen(true)
     setErr(false)
 
     const data = {
@@ -81,7 +79,7 @@ function Registration() {
     //   setErr(true);
     //   setIsSubmmiting(false)
     // }
-    handleClick();
+
     
     await axios
     .post("https://mernfood-delivery.onrender.com/api/Register", data)
