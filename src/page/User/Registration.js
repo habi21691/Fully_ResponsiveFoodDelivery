@@ -42,8 +42,13 @@ function Registration() {
 
   const [open, setOpen] = useState(false);
 
-  const [err, setErr] = useState(false);
   
+  const [err, setErr] = useState(false);
+   const handleSnackOpen = () => {
+     setErr(true);
+
+   }
+
 
   const closeSnackbar = () => {
     setOpen(false);
@@ -61,7 +66,7 @@ function Registration() {
     console.log(data1);
     setIsSubmmiting(true);
     setOpen(true)
-    setErr(true)
+    // setErr(true)
 
     const data = {
       fullname: fullname,
@@ -88,7 +93,7 @@ function Registration() {
       console.log(data.status);
       if (data.status === 200) {
         console.log(err)
-        setErr(true);
+        handleSnackOpen()
   
         }
         else{
