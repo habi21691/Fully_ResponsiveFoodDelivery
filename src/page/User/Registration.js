@@ -130,9 +130,9 @@ function Registration() {
                 bgcolor: red[500],
               }}
             ></Avatar>
+              <form onSubmit={handleSubmit(onSubmit)}>
             <Box>
               
-              <form onSubmit={handleSubmit(onSubmit)}>
                 <Typography textAlign={"center"} fontSize={"2em"}>
                   Registration Form
                 </Typography>
@@ -217,13 +217,12 @@ function Registration() {
                 <Link marginX={26} underline="none" href="/">
                   Login
                 </Link>
-            </form>
             {err ? (
-                <Snackbar
-                  open={open}
-                  autoHideDuration={300}
-                  onClose={closeSnackbar}
-                  anchorOrigin={{ vertical: "top", horizontal: "center" }}
+              <Snackbar
+              open={open}
+              autoHideDuration={300}
+              onClose={closeSnackbar}
+              anchorOrigin={{ vertical: "top", horizontal: "center" }}
                 >
                   <Alert severity="success">
                     Hello {username},Successfully Register!
@@ -231,9 +230,9 @@ function Registration() {
                 </Snackbar>
               ) : (
                 <Snackbar
-                  open={open}
-                  onClose={closeSnackbar}
-                  anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                open={open}
+                onClose={closeSnackbar}
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
                 >
                   <Alert onClose={closeSnackbar} severity="error">
                     Oops! <strong>{username}</strong>Already Exist,try again
@@ -243,6 +242,7 @@ function Registration() {
               )}
 
               </Box>
+              </form>
           </Paper>
         </Grid>
       </Grid>
