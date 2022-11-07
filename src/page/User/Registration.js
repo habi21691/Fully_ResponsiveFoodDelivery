@@ -189,8 +189,8 @@ function Registration() {
                   fullWidth
                   variant="standard"
                   inputProps={{
-                    maxLength: 10,
-                    minLength: 10,
+                    maxLength:12,
+                    minLength:10,
                     pattern: "([^0-9]*)",
                   }}
                   label="Phone_Number:"
