@@ -63,7 +63,7 @@ function Registration() {
     console.log(data1);
     setIsSubmmiting(true);
     
-    // setErr(false)
+    setErr(false)
 
     const data = {
       fullname: fullname,
