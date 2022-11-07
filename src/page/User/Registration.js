@@ -61,7 +61,7 @@ function Registration() {
     console.log(data1);
     setIsSubmmiting(true);
     setOpen(true)
-    setErr(false)
+    setErr(true)
 
     const data = {
       fullname: fullname,
