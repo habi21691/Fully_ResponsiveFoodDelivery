@@ -73,8 +73,8 @@ function Registration() {
     };
     // console.log(data.username)
     // console.log(username)
-    if (fullname.length <= 3 || phone_number.length === 10) {
-      console.log("fullname must be less than 4");
+    if ( phone_number.length === 10) {
+      console.log("phone_number must be less than 4");
     }
     // else if(data.username === username){
     //   // openBadSnack()
