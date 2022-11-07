@@ -187,9 +187,8 @@ function Registration() {
                   {...register("phone_number")}
                   fullWidth
                   variant="standard"
+                  maxLength='10'
                   inputProps={{
-                    maxLength:12,
-                    minLength:10,
                     pattern: "([^0-9]*){10,10}",
                   }}
                   label="Phone_Number:"
@@ -218,7 +217,7 @@ function Registration() {
                 <Link marginX={26} underline="none" href="/">
                   Login
                 </Link>
-                {err ? (
+                {!err ? (
                   <Snackbar
                     open={open}
                     autoHideDuration={300}
