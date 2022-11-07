@@ -42,13 +42,10 @@ function Registration() {
 
   const [open, setOpen] = useState(false);
 
-  
   const [err, setErr] = useState(false);
-   const handleSnackOpen = () => {
-     setErr(true);
-
-   }
-
+  const handleSnackOpen = () => {
+    setErr(true);
+  };
 
   const closeSnackbar = () => {
     setOpen(false);
@@ -65,7 +62,7 @@ function Registration() {
   const onSubmit = async (data1) => {
     console.log(data1);
     setIsSubmmiting(true);
-    setOpen(true)
+    setOpen(true);
     // setErr(true)
 
     const data = {
@@ -85,24 +82,20 @@ function Registration() {
     //   setIsSubmmiting(false)
     // }
 
-    
     await axios
-    .post("https://mernfood-delivery.onrender.com/api/Register", data)
-    .then((data) => {
-      console.log(data.status)
-      console.log(data.status);
-      if (data.status === 200) {
-        console.log(err)
-        handleSnackOpen()
-  
+      .post("https://mernfood-delivery.onrender.com/api/Register", data)
+      .then((data) => {
+        console.log(data.status);
+        console.log(data.status);
+        if (data.status === 200) {
+          console.log(err);
+          handleSnackOpen();
+        } else {
+          console.log(err);
         }
-        else{
-          console.log(err)
-        }
-      
       });
-      setIsSubmmiting(false);
-     setErr(false)
+    setIsSubmmiting(false);
+    setErr(false);
   };
 
   return (
@@ -133,20 +126,24 @@ function Registration() {
                 bgcolor: red[500],
               }}
             ></Avatar>
-              <form onSubmit={handleSubmit(onSubmit)}>
-            <Box>
-              
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Box>
                 <Typography textAlign={"center"} fontSize={"2em"}>
                   Registration Form
                 </Typography>
                 <Box marginY={2} />
                 <TextField
-                 type={'text'}
+                  type={"text"}
                   name="fullname"
                   {...register("fullname")}
                   fullWidth
                   variant="standard"
-                  inputProps={{ maxLength: 30, minLength: 7 }}
+                  InputProps={{
+                    maxLength: 30,
+                    minLength: 7,
+                     type:'text'
+
+                  }}
                   label="Full Name:"
                   value={fullname}
                   onChange={(event) => {
@@ -192,8 +189,7 @@ function Registration() {
                   {...register("phone_number")}
                   fullWidth
                   variant="standard"
-                  inputProps={{maxLength:10, minLength:10}}
-             
+                  inputProps={{ maxLength: 10, minLength: 10 }}
                   label="Phone_Number:"
                   type="number"
                   value={phone_number}
@@ -220,32 +216,31 @@ function Registration() {
                 <Link marginX={26} underline="none" href="/">
                   Login
                 </Link>
-            {err ? (
-              <Snackbar
-              open={open}
-              autoHideDuration={300}
-              onClose={closeSnackbar}
-              anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                >
-                  <Alert severity="success">
-                    Hello {username},Successfully Register!
-                  </Alert>
-                </Snackbar>
-              ) : (
-                <Snackbar
-                open={open}
-                onClose={closeSnackbar}
-                anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                >
-                  <Alert onClose={closeSnackbar} severity="error">
-                    Oops! <strong>{username}</strong>Already Exist,try again
-                    later.
-                  </Alert>
-                </Snackbar>
-              )}
-
+                {err ? (
+                  <Snackbar
+                    open={open}
+                    autoHideDuration={300}
+                    onClose={closeSnackbar}
+                    anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                  >
+                    <Alert severity="success">
+                      Hello {username},Successfully Register!
+                    </Alert>
+                  </Snackbar>
+                ) : (
+                  <Snackbar
+                    open={open}
+                    onClose={closeSnackbar}
+                    anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                  >
+                    <Alert onClose={closeSnackbar} severity="error">
+                      Oops! <strong>{username}</strong>Already Exist,try again
+                      later.
+                    </Alert>
+                  </Snackbar>
+                )}
               </Box>
-              </form>
+            </form>
           </Paper>
         </Grid>
       </Grid>
