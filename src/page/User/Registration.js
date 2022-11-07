@@ -138,10 +138,10 @@ function Registration() {
                   {...register("fullname")}
                   fullWidth
                   variant="standard"
-                  InputProps={{
+                  inputProps={{
                     maxLength: 30,
                     minLength: 7,
-                     type:'text'
+                    pattern:/[A-Za-z]/
 
                   }}
                   label="Full Name:"
