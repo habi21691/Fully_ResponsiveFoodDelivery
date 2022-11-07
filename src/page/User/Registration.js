@@ -73,7 +73,7 @@ function Registration() {
     };
     // console.log(data.username)
     // console.log(username)
-    if (fullname.length <= 3) {
+    if (fullname.length <= 3 || phone_number.length === 10) {
       console.log("fullname must be less than 4");
     }
     // else if(data.username === username){
@@ -187,7 +187,7 @@ function Registration() {
                   {...register("phone_number")}
                   fullWidth
                   variant="standard"
-                  maxLength='10'
+                  
                   inputProps={{
                     pattern: "([^0-9]*){10,10}",
                   }}
