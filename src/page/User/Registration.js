@@ -140,7 +140,7 @@ function Registration() {
                   variant="standard"
                   inputProps={{
                   
-                  pattern: '[/^A-Za-z*\S/]{7,25}',
+                  pattern: '([A-Za-z][^\s]+){7,25}',
                   }}
                   label="Full Name:"
                   value={fullname}
