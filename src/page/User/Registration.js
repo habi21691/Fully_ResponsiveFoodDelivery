@@ -139,10 +139,9 @@ function Registration() {
                   fullWidth
                   variant="standard"
                   inputProps={{
-                    maxLength: 30,
+                    maxLength: 25,
                     minLength: 7,
-                    pattern:/[A-Za-z]/
-
+                    pattern: /[A-Za-z]/,
                   }}
                   label="Full Name:"
                   value={fullname}
@@ -189,7 +188,11 @@ function Registration() {
                   {...register("phone_number")}
                   fullWidth
                   variant="standard"
-                  inputProps={{ maxLength: 10, minLength: 10 }}
+                  inputProps={{
+                    maxLength: 10,
+                    minLength: 10,
+                    pattern: "([^0-9]*)",
+                  }}
                   label="Phone_Number:"
                   type="number"
                   value={phone_number}
