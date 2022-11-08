@@ -191,7 +191,7 @@ function Registration() {
                   inputProps={{
                     maxLength:10,
                     minLength:10,
-                    pattern: "([^0-9]*)",
+                    // pattern: "([^0-9]*)",
                   }}
                   label="Phone_Number:"
                   type="number"
