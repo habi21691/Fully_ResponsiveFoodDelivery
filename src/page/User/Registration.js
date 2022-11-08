@@ -131,19 +131,15 @@ function Registration() {
                   Registration Form
                 </Typography>
                 <Box marginY={2} />
-                <TextField
+                <input
                  type='text'
                   name="fullname"
                   {...register("fullname",{
-                    pattern:' /[A-Za-z]{3}/'
+                    pattern: /[A-Za-z]/
                   })}
                   fullWidth
                   variant="standard"
-                  inputProps={{
-                  maxLength:25,
-                  minLength:7,
-               
-                  }}
+                 
                   label="Full Name:"
                   value={fullname}
                   onChange={(event) => {
@@ -186,15 +182,11 @@ function Registration() {
                 {errors.password && <p id="error">{errors.password.message}</p>}
                 <Box marginY={2} />
                 <TextField
-                  {...register("phone_number",{ max:10, min:10})}
+                  {...register("phone_number",{ maxLength:10})}
                   fullWidth
                   variant="standard"
                   required
-                  inputProps={{
-                    maxLength:10,
-                    minLength:10,
-                    // pattern: "([^0-9]*)",
-                  }}
+                 
                   label="Phone_Number:"
                   type="number"
                   value={phone_number}
