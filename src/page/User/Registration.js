@@ -135,7 +135,7 @@ function Registration() {
                  type='text'
                   name="fullname"
                   {...register("fullname",{
-                    pattern: /[A-Za-z]{3}/
+                    pattern:' /[A-Za-z]{3}/'
                   })}
                   fullWidth
                   variant="standard"
