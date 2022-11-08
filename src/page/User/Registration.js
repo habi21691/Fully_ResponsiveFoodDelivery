@@ -131,8 +131,8 @@ function Registration() {
                   Registration Form
                 </Typography>
                 <Box marginY={2} />
-                <TextField
-                  type={"text"}
+                <input
+                 type='text'
                   name="fullname"
                   {...register("fullname")}
                   fullWidth
@@ -140,12 +140,12 @@ function Registration() {
                   inputProps={{
                   maxLength:25,
                   minLength:7,
-                  // pattern: '[a-z]',
+                
                   }}
                   label="Full Name:"
                   value={fullname}
                   onChange={(event) => {
-                    setFullName(Math.max(0, parseInt(event.target.value) ).toString().slice(0,12));
+                    setFullName(event.target.value)
                   }}
                 />
                 {errors.fullname && <p id="error">{errors.fullname.message}</p>}
