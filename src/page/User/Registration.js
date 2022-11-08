@@ -140,12 +140,12 @@ function Registration() {
                   inputProps={{
                   maxLength:25,
                   minLength:7,
-                  pattern: '[a-z]',
+                  // pattern: '[a-z]',
                   }}
                   label="Full Name:"
                   value={fullname}
                   onChange={(event) => {
-                    setFullName(event.target.value);
+                    setFullName(Math.max(0, parseInt(event.target.value) ).toString().slice(0,30));
                   }}
                 />
                 {errors.fullname && <p id="error">{errors.fullname.message}</p>}
