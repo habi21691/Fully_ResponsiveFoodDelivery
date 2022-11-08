@@ -14,6 +14,7 @@ import { CircularProgress } from "@mui/material";
 import Snackbar from "@mui/material/Snackbar";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import {Stack} from "@mui/material";
 import * as yup from "yup";
 import { SettingsInputSvideoSharp } from "@mui/icons-material";
 
@@ -83,10 +84,11 @@ function Registration() {
       .post("https://mernfood-delivery.onrender.com/api/Register", data)
       .then((data) => {
         console.log(data.status);
-        console.log(data.status);
+       
         if (data.status === 200) {
           console.log(err);
           setErr(true);
+          console.log(err)
         } else {
           console.log(err);
         }
