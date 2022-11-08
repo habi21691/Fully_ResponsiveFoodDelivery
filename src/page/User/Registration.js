@@ -86,7 +86,7 @@ function Registration() {
         console.log(data.status);
         if (data.status === 200) {
           console.log(err);
-          setErr(false);
+          setErr(true);
         } else {
           console.log(err);
         }
