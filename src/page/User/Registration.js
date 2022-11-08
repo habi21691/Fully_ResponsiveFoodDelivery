@@ -43,9 +43,9 @@ function Registration() {
   const [open, setOpen] = useState(false);
 
   const [err, setErr] = useState(false);
-  const handleSnackOpen = () => {
-    setErr(true);
-  };
+  // const handleSnackOpen = () => {
+  //   setErr(true);
+  // };
 
   const closeSnackbar = () => {
     setOpen(false);
@@ -73,14 +73,11 @@ function Registration() {
     };
     // console.log(data.username)
     // console.log(username)
-    if ( phone_number.length === 10) {
+    if ( phone_number.length < 10 || phone_number >10 ) {
       console.log("phone_number must be less than 4");
     }
-    // else if(data.username === username){
-    //   // openBadSnack()
-    //   setErr(true);
-    //   setIsSubmmiting(false)
-    // }
+   
+    
 
     await axios
       .post("https://mernfood-delivery.onrender.com/api/Register", data)
@@ -89,7 +86,7 @@ function Registration() {
         console.log(data.status);
         if (data.status === 200) {
           console.log(err);
-          handleSnackOpen();
+          setErr(false);
         } else {
           console.log(err);
         }
@@ -139,8 +136,9 @@ function Registration() {
                   fullWidth
                   variant="standard"
                   inputProps={{
-                  
-                  pattern: '([A-Za-z][^\s]+){7,25}',
+                  maxLength:25,
+                  minLength:7,
+                  pattern: '([A-Za-z]+[^\s]+[A-Za-z])',
                   }}
                   label="Full Name:"
                   value={fullname}
@@ -217,7 +215,8 @@ function Registration() {
                 <Link marginX={26} underline="none" href="/">
                   Login
                 </Link>
-                {!err ? (
+                {err &&<Stack>
+
                   <Snackbar
                     open={open}
                     autoHideDuration={300}
@@ -228,18 +227,19 @@ function Registration() {
                       Hello {username},Successfully Register!
                     </Alert>
                   </Snackbar>
-                ) : (
-                  <Snackbar
+                
+                  {/* <Snackbar
                     open={open}
                     onClose={closeSnackbar}
                     anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                  >
+                    >
                     <Alert onClose={closeSnackbar} severity="error">
                       Oops! <strong>{username}</strong>Already Exist,try again
                       later.
                     </Alert>
-                  </Snackbar>
-                )}
+                  </Snackbar> */}
+                    </Stack>
+                }
               </Box>
             </form>
           </Paper>
