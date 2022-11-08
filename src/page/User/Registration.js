@@ -145,7 +145,7 @@ function Registration() {
                   label="Full Name:"
                   value={fullname}
                   onChange={(event) => {
-                    setFullName(Math.max(0, parseInt(event.target.value) ).toString().slice(0,30));
+                    setFullName(Math.max(0, parseInt(event.target.value) ).toString().slice(0,12));
                   }}
                 />
                 {errors.fullname && <p id="error">{errors.fullname.message}</p>}
