@@ -75,7 +75,7 @@ function Registration() {
     // console.log(data.username)
     // console.log(username)
     if ( phone_number.length < 10 || phone_number >10 ) {
-      console.log("phone_number must be less than 4");
+      console.log("phone_number must be 10");
     }
    
     
@@ -131,7 +131,7 @@ function Registration() {
                   Registration Form
                 </Typography>
                 <Box marginY={2} />
-                <input
+                <TextField
                  type='text'
                   name="fullname"
                   {...register("fullname")}
@@ -140,7 +140,7 @@ function Registration() {
                   inputProps={{
                   maxLength:25,
                   minLength:7,
-                
+               
                   }}
                   label="Full Name:"
                   value={fullname}
