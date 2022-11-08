@@ -134,7 +134,9 @@ function Registration() {
                 <TextField
                  type='text'
                   name="fullname"
-                  {...register("fullname")}
+                  {...register("fullname",{
+                    pattern: /[A-Za-z]{3}/
+                  })}
                   fullWidth
                   variant="standard"
                   inputProps={{
@@ -184,7 +186,7 @@ function Registration() {
                 {errors.password && <p id="error">{errors.password.message}</p>}
                 <Box marginY={2} />
                 <TextField
-                  {...register("phone_number")}
+                  {...register("phone_number",{ max:10, min:10})}
                   fullWidth
                   variant="standard"
                   required
