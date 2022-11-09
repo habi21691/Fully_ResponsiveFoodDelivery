@@ -137,7 +137,7 @@ function Registration() {
                   pattern:/^[a-zA-Z-'. ]+$/
                   }}
                   label="Full Name:"
-                  value={fullname}
+                  value={fullname.trim()}
                   onChange={(event) => {
                     setFullName(event.target.value)
                   }}
