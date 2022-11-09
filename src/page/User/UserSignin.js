@@ -108,7 +108,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
           // WANT TO CLOSE LOGIN DIALOG HERE;
           //---------------------------------
         } else if (data.status === 404) {
-          setError(true)
+          setError(false)
           console.log("naughty naughty");
           // setMsg("User Error")
         
@@ -125,12 +125,12 @@ const Alert = React.forwardRef(function Alert(props, ref) {
       })
       .catch((err, data) => {
      
-        
+        setError(false)
       });
 
     setIsSumbiting(false);
     // setSuccess(false)
-    setError(false);
+ 
   };
 
   return (
@@ -221,7 +221,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                 </Link>
               </Box>
               <Stack>
-                {!error ? (
+                {error ? (
                   <Snackbar
                     open={openSnackbar}
                     autoHideDuration={700}
