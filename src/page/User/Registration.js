@@ -128,27 +128,19 @@ function Registration() {
                 <TextField
                  type='text'
                   name="fullname"
-                  {...register("fullname"),{ required: true, pattern:/^[A-Za-z]+$/}}
+                  {...register("fullname"),{ required: true, pattern:/^[a-zA-Z-'. ]+$/}}
                   fullWidth
                   variant="standard"
                   inputProps={{
                   maxLength:25,
                   minLength:7,
-               
-                  pattern: /^[A-Za-z]+$/
                   }}
                   label="Full Name:"
                   value={fullname}
                   onChange={(event) => {
                     setFullName(event.target.value)
                   }}
-                  rules={{
-                    required: 'Enter Email',
-                    pattern: {
-                      value: /^[A-Za-z]+$/,
-                      message: 'Please enter a letter only'
-                    }
-                 }}
+                
                 />
                 {errors.fullname && <p id="error">{errors.fullname.message}</p>}
 
