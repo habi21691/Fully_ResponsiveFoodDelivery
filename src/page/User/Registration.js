@@ -87,7 +87,7 @@ function Registration() {
         setErr(true)
       })
       // setErr(true);
-    // setIsSubmmiting(false);
+    setIsSubmmiting(false);
     console.log(err)
   };
 
