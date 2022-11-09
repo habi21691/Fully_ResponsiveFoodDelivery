@@ -43,7 +43,7 @@ function Registration() {
 
   const [open, setOpen] = useState(false);
 
-  const [err, setErr] = useState(false);
+  const [err, setErr] = useState(true);
  
   const closeSnackbar = () => {
     setOpen(false);
@@ -63,7 +63,7 @@ function Registration() {
   const onSubmit =  (data1) => {
     console.log(data1);
     setIsSubmmiting(true);
-    setOpen(true);
+    // setOpen(true);
     handleModal()
      
 
@@ -81,13 +81,14 @@ function Registration() {
       .post("https://mernfood-delivery.onrender.com/api/Register", data)
       .then( function (data) {
         console.log(data.status)
-        setErr(true)
+        setErr(false      )
       }).catch( function (err) {
         setIsSubmmiting(false)
-        setErr(false)
+        setErr(true)
       })
       // setErr(true);
     // setIsSubmmiting(false);
+    console.log(err)
   };
 
   return (
