@@ -44,13 +44,13 @@ function Registration() {
   const [open, setOpen] = useState(false);
 
   const [err, setErr] = useState(false);
-  // const handleSnackOpen = () => {
-  //   setErr(true);
-  // };
-
+ 
   const closeSnackbar = () => {
     setOpen(false);
   };
+  const handleModal = () => {
+    setOpen(true)
+  }
 
   const {
     register,
@@ -64,7 +64,8 @@ function Registration() {
     console.log(data1);
     setIsSubmmiting(true);
     setOpen(true);
-    // setErr(true)
+    handleModal()
+     setErr(true)
 
     const data = {
       fullname: fullname,
@@ -72,8 +73,7 @@ function Registration() {
       password: password,
       phone_number: phone_number,
     };
-    // console.log(data.username)
-    // console.log(username)
+  
  
     
 
@@ -81,11 +81,9 @@ function Registration() {
       .post("https://mernfood-delivery.onrender.com/api/Register", data)
       .then((data) => {
         console.log(data.status);
-       
+        
         if (data.status === 200) {
-          console.log(err);
-          setErr(true);
-          console.log(err)
+         
         } else {
           console.log(err);
         }
