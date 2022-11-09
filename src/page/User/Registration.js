@@ -60,7 +60,7 @@ function Registration() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data1) => {
+  const onSubmit =  (data1) => {
     console.log(data1);
     setIsSubmmiting(true);
     setOpen(true);
@@ -77,14 +77,17 @@ function Registration() {
  
     
 
-    await axios
+     axios
       .post("https://mernfood-delivery.onrender.com/api/Register", data)
-      .then((data) => {
+      .then( function (data) {
         console.log(data.status)
         setErr(true)
-      });
-    setIsSubmmiting(false);
-    setErr(false);
+      }).catch( function (err) {
+        setIsSubmmiting(false)
+        setErr(false)
+      })
+      // setErr(true);
+    // setIsSubmmiting(false);
   };
 
   return (
