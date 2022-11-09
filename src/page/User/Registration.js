@@ -141,6 +141,13 @@ function Registration() {
                   onChange={(event) => {
                     setFullName(event.target.value)
                   }}
+                  rules={{
+                    required: 'Enter Email',
+                    pattern: {
+                      value: /^(([a-zA-Z]))$/,
+                      message: 'Please enter a letter only'
+                    }
+                 }}
                 />
                 {errors.fullname && <p id="error">{errors.fullname.message}</p>}
 
