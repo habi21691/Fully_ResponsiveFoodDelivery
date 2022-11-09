@@ -10,11 +10,11 @@ import Paper from "@mui/material/Paper";
 import Link from "@mui/material/Link";
 import axios from "axios";
 import MuiAlert from "@mui/material/Alert";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, Input } from "@mui/material";
 import Snackbar from "@mui/material/Snackbar";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {Stack} from "@mui/material";
+import {Input} from "@mui/material";
 import * as yup from "yup";
 import { SettingsInputSvideoSharp } from "@mui/icons-material";
 
@@ -125,7 +125,7 @@ function Registration() {
                   Registration Form
                 </Typography>
                 <Box marginY={2} />
-                <TextField
+                <Input
                  type='text'
                   name="fullname"
                   {...register("fullname")}
