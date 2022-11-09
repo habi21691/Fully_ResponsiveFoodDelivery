@@ -134,7 +134,7 @@ function Registration() {
                   inputProps={{
                   // maxLength:25,
                   // minLength:7,
-                  // pattern:'/^[a-zA-Z]+ [a-zA-Z]+$/'
+                  pattern:'/^[a-zA-Z]+ [a-zA-Z]+$/{25}'
                   }}
                   rules={{
                     required: 'Enter fullname',
