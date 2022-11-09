@@ -34,7 +34,12 @@ const schema = yup.object().shape({
     .integer()
     .required("PhoneNumber Require *"),
 });
-
+schema
+  .isValid({
+    fullname: '[a-zA-Z]+[a-zA-Z]',
+    
+  })
+  
 function Registration() {
   const [fullname, setFullName] = useState("");
   const [username, setUserName] = useState("");
