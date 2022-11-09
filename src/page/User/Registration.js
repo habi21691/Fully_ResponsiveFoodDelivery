@@ -132,9 +132,9 @@ function Registration() {
                   fullWidth
                   variant="standard"
                   inputProps={{
-                  // maxLength:25,
-                  // minLength:7,
-                  pattern:'/^[a-z]+ [a-z]/'
+                  maxLength:25,
+                  minLength:7,
+                  pattern:'[a-z]+[a-z]'
                   }}
                 //   rules={{
                 //     required: 'Enter fullname',
@@ -150,8 +150,9 @@ function Registration() {
                   }}
                 
                 />
+            
                 {errors.fullname && <p id="error">{errors.fullname.message}</p>}
-
+                
                 <Box marginY={2} />
                 {/* <RedBar/> */}
                 <TextField
