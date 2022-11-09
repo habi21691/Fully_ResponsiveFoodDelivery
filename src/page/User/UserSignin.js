@@ -68,7 +68,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   
     setOpenSnackbar(true);
    
-
+    setError(false)
 
     const user = {
       username: username,
@@ -79,7 +79,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
       .then((data) => {
         console.log(data.status);
         if (data.status === 200) {
-        setError(false)
+        
           console.log(error);
           if (data.data.accessToken) {
             if (data.data.user.role === "User") {
