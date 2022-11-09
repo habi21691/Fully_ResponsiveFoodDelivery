@@ -14,7 +14,7 @@ import { CircularProgress, Input } from "@mui/material";
 import Snackbar from "@mui/material/Snackbar";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {Input} from "@mui/material";
+import Input from "@mui/material/Input";
 import * as yup from "yup";
 import { SettingsInputSvideoSharp } from "@mui/icons-material";
 
