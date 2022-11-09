@@ -25,7 +25,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 const schema = yup.object().shape({
-  fullname: yup.string().required("Fullname Require *"),
+  fullname: yup.string().uppercase().required("Fullname Require *"),
   username: yup.string().email().required("Email Require * "),
   password: yup.string().required("Password Require *"),
   phone_number: yup
@@ -47,18 +47,7 @@ function Registration() {
 
   const [err, setErr] = useState(true);
  
-  const [showPassword, setShowPassword] = useState(false)
-
-  const handleClickShowPassword = () => {
-    setShowPassword({
-      ...setPassword,
-      showPassword: !password.showPassword
-    }
-    );
-};
-const handleMouseDownPassword = (event) => {
-  event.preventDefault();
-};
+ 
 
   const closeSnackbar = () => {
     setOpen(false);
@@ -152,13 +141,13 @@ const handleMouseDownPassword = (event) => {
                   minLength:7,
                   pattern:'[a-z]+[a-z]'
                   }}
-                //   rules={{
-                //     required: 'Enter fullname',
-                //     pattern: {
-                //       value:'/^[a-zA-Z]+ [a-zA-Z]+$/',
-                //       message: 'Please enter a valid fullname'
-                //     }
-                //  }}    
+                  rules={{
+                    required: 'Enter fullname',
+                    pattern: {
+                      value:'/^[a-zA-Z]+ [a-zA-Z]/',
+                      message: 'Please enter a valid fullname'
+                    }
+                 }}    
                   label="Full Name:"
                   value={fullname}
                   onChange={(event) => {
@@ -170,7 +159,7 @@ const handleMouseDownPassword = (event) => {
                 {errors.fullname && <p id="error">{errors.fullname.message}</p>}
                 
                 <Box marginY={2} />
-                {/* <RedBar/> */}
+             
                 <TextField
                   {...register("username")}
                   fullWidth
@@ -194,41 +183,13 @@ const handleMouseDownPassword = (event) => {
                 {errors.username && <p id="error">{errors.username.message}</p>}
 
                 <Box marginY={2} />
-                <FormControl sx={{ m: 1 }} 
-                        variant="standard">
-                          
-                        <InputLabel 
-                        htmlFor="standard-adornment-password">
-                            Password
-                        </InputLabel>
-                        <Input
-                            id="standard-adornment-password"
-                            type={"password"}
-                            value={password}
-                            fullWidth
-                            onChange={(event) => {
-                              setPassword(event.target.value)
-                            }}                         
-                               endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={handleClickShowPassword}
-                                        onMouseDown={handleMouseDownPassword}
-                                    >
-                                        {showPassword 
-                                        ? <VisibilityOff /> 
-                                        : <Visibility />}
-                                    </IconButton>
-                                </InputAdornment>
-                            }
-                        />
-                    </FormControl>
-                {/* <TextField
+               
+                <TextField
                   {...register("password")}
                   fullWidth
                   variant="standard"
                   label="Password:"
+                  
                   inputProps={{ maxLength: 6, minLength: 6 }}
                   name="password"
                   type="password"
@@ -236,7 +197,8 @@ const handleMouseDownPassword = (event) => {
                   onChange={(event) => {
                     setPassword(event.target.value);
                   }}
-                /> */}
+                 
+                />
                 {errors.password && <p id="error">{errors.password.message}</p>}
                 <Box marginY={2} />
                 <TextField
