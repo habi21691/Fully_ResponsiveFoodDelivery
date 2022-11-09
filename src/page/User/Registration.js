@@ -65,7 +65,7 @@ function Registration() {
     setIsSubmmiting(true);
     setOpen(true);
     handleModal()
-     setErr(true)
+     
 
     const data = {
       fullname: fullname,
@@ -80,13 +80,8 @@ function Registration() {
     await axios
       .post("https://mernfood-delivery.onrender.com/api/Register", data)
       .then((data) => {
-        console.log(data.status);
-        
-        if (data.status === 200) {
-         
-        } else {
-          console.log(err);
-        }
+        console.log(data.status)
+        setErr(true)
       });
     setIsSubmmiting(false);
     setErr(false);
@@ -215,7 +210,7 @@ function Registration() {
                 <Link marginX={26} underline="none" href="/">
                   Login
                 </Link>
-                {err &&<Stack>
+                {err ?
 
                   <Snackbar
                     open={open}
@@ -227,8 +222,8 @@ function Registration() {
                       Hello {username},Successfully Register!
                     </Alert>
                   </Snackbar>
-                
-                  {/* <Snackbar
+                :
+                  <Snackbar
                     open={open}
                     onClose={closeSnackbar}
                     anchorOrigin={{ vertical: "top", horizontal: "center" }}
@@ -237,8 +232,8 @@ function Registration() {
                       Oops! <strong>{username}</strong>Already Exist,try again
                       later.
                     </Alert>
-                  </Snackbar> */}
-                    </Stack>
+                  </Snackbar>
+                   
                 }
               </Box>
             </form>
