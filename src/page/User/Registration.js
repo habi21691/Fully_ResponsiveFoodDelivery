@@ -197,14 +197,16 @@ const handleMouseDownPassword = (event) => {
                 <Box marginY={2} />
                 <FormControl sx={{ m: 1, width: "25ch" }} 
                         variant="standard">
+                          
                         <InputLabel 
                         htmlFor="standard-adornment-password">
                             Password
                         </InputLabel>
                         <Input
                             id="standard-adornment-password"
-                            type={showPassword ? "text" : "password"}
+                            type={"password"}
                             value={password}
+                            fullWidth
                             onChange={(event) => {
                               setPassword(event.target.value)
                             }}                         
