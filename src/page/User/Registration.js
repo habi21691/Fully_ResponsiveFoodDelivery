@@ -139,7 +139,7 @@ function Registration() {
                   rules={{
                     required: 'Enter fullname',
                     pattern: {
-                      value:/^[a-zA-Z]+ [a-zA-Z]+$/,
+                      value:'/^[a-zA-Z]+ [a-zA-Z]+$/',
                       message: 'Please enter a valid fullname'
                     }
                  }}                  label="Full Name:"
