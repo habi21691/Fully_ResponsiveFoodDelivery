@@ -30,7 +30,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 
 
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(true);
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
 
@@ -174,7 +174,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                 <TextField
                   required
                   fullWidth
-                  inputProps={{maxLength:14, minLength:4}}
+                  inputProps={{maxLength:30, minLength:6}}
                   variant="standard"
                   value={username}
                   label="User Name:"
@@ -186,7 +186,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                 <TextField
                   required
                   fullWidth
-                  inputProps={{maxLength:6, minLength:4}}
+                  inputProps={{maxLength:6, minLength:6}}
 
                   variant="standard"
                   label="Password:"

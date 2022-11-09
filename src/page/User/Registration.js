@@ -81,10 +81,10 @@ function Registration() {
       .post("https://mernfood-delivery.onrender.com/api/Register", data)
       .then( function (data) {
         console.log(data.status)
-        setErr(false      )
+        setErr(false)
       }).catch( function (err) {
         setIsSubmmiting(false)
-        setErr(true)
+        setErr(false)
       })
       // setErr(true);
     setIsSubmmiting(false);
