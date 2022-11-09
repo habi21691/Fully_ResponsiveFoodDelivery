@@ -79,7 +79,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
       .then((data) => {
         console.log(data.status);
         if (data.status === 200) {
-        
+        setError(false)
           console.log(error);
           if (data.data.accessToken) {
             if (data.data.user.role === "User") {
@@ -115,7 +115,8 @@ const Alert = React.forwardRef(function Alert(props, ref) {
           //---------------------------------
           // WANT TO DISPLAY SNACKBAR HERE
           //---------------------------------
-        } else if (data.status === 502) {
+        } else if (data.status === 504) {
+          setError(true)
           console.log("off it's hinges, innit");
           
         } else {
