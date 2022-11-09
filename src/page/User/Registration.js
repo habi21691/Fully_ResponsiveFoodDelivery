@@ -205,8 +205,10 @@ const handleMouseDownPassword = (event) => {
                             id="standard-adornment-password"
                             type={showPassword ? "text" : "password"}
                             value={password}
-                            onChange={handleChange("password")}
-                            endAdornment={
+                            onChange={(event) => {
+                              setPassword(event.target.value)
+                            }}                         
+                               endAdornment={
                                 <InputAdornment position="end">
                                     <IconButton
                                         aria-label="toggle password visibility"
