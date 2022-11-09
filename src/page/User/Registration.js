@@ -14,10 +14,11 @@ import { CircularProgress } from "@mui/material";
 import Snackbar from "@mui/material/Snackbar";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
-import {Input,FormControl,InputLabel} from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import {Input,FormControl,InputLabel,InputAdornment } from "@mui/material";
 import * as yup from "yup";
-import { SettingsInputSvideoSharp } from "@mui/icons-material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -200,7 +201,7 @@ function Registration() {
                         <Input
                             id="standard-adornment-password"
                             type={showPassword ? "text" : "password"}
-                            value={showPassword.password}
+                            value={password}
                             onChange={handleChange("password")}
                             endAdornment={
                                 <InputAdornment position="end">
