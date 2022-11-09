@@ -74,10 +74,7 @@ function Registration() {
     };
     // console.log(data.username)
     // console.log(username)
-    if ( phone_number.length < 10 || phone_number >10 ) {
-      console.log("phone_number must be 10");
-    }
-   
+ 
     
 
     await axios
