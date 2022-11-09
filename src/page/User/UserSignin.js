@@ -221,18 +221,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                 </Link>
               </Box>
               <Stack>
-                {error ? (
-                  <Snackbar
-                    open={openSnackbar}
-                    autoHideDuration={700}
-                    onClose={closeSnackbar}
-                    anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                  >
-                    <Alert severity="success">
-                      Hi {username},Successfuly Logged !!!
-                    </Alert>
-                  </Snackbar>
-                ) : (
+                {error ?(
                   <Snackbar
                     open={openSnackbar}
                     onClose={closeSnackbar}
@@ -242,7 +231,19 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                       Oops! Something went wrong,try again later.
                     </Alert>
                   </Snackbar>
-                )}
+                )
+              : (
+                <Snackbar
+                  open={openSnackbar}
+                  autoHideDuration={700}
+                  onClose={closeSnackbar}
+                  anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                >
+                  <Alert severity="success">
+                    Hi {username},Successfuly Logged !!!
+                  </Alert>
+                </Snackbar>
+              ) }
               
               </Stack>
             </form>
