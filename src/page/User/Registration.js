@@ -51,8 +51,9 @@ function Registration() {
 
   const handleClickShowPassword = () => {
     setShowPassword(
-       true
-        
+    password.showPassword=true
+     
+    
     );
 };
 const handleMouseDownPassword = (event) => {
@@ -139,10 +140,8 @@ const handleMouseDownPassword = (event) => {
                   Registration Form
                 </Typography>
                 <Box marginY={2} />
-                <FormControl>
-
-                </FormControl>
-                <Input
+               
+                <TextField
                  type='text'
                   name="fullname"
                   {...register("fullname")}
