@@ -50,10 +50,13 @@ function Registration() {
   const [showPassword, setShowPassword] = useState(false)
 
   const handleClickShowPassword = () => {
-    setValues({
-        ...values,
-        showPassword: !values.showPassword,
-    });
+    setShowPassword(
+       true
+        
+    );
+};
+const handleMouseDownPassword = (event) => {
+  event.preventDefault();
 };
 
   const closeSnackbar = () => {
