@@ -181,6 +181,13 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                   onChange={(event) => {
                     setUserName(event.target.value);
                   }}
+                  rules={{
+                    required: 'Enter Email',
+                    pattern: {
+                      value: /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                      message: 'Please enter a valid Email'
+                    }
+                 }}
                 />
                 <Box marginY={2} />
                 <TextField
