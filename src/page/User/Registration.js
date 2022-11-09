@@ -15,7 +15,7 @@ import Snackbar from "@mui/material/Snackbar";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import IconButton from "@mui/material/IconButton";
-import {Input,FormControl,InputLabel,InputAdornment } from "@mui/material";
+import { Input, FormControl, InputLabel, InputAdornment } from "@mui/material";
 import * as yup from "yup";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
@@ -25,8 +25,14 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 const schema = yup.object().shape({
-  fullname: yup.string().type().required("Fullname Require *"),
-  username: yup.string().email().required("Email Require * "),
+  fullname: yup
+    .string()
+    .required("Please enter the required field")
+    .matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for this field "),
+  username: yup
+    .string()
+    .email()
+    .required("Email Require * "),
   password: yup.string().required("Password Require *"),
   phone_number: yup
     .number()
@@ -34,12 +40,7 @@ const schema = yup.object().shape({
     .integer()
     .required("PhoneNumber Require *"),
 });
-schema
-  .isValid({
-    fullname: '[a-zA-Z]+[a-zA-Z]',
-    
-  })
-  
+
 function Registration() {
   const [fullname, setFullName] = useState("");
   const [username, setUserName] = useState("");
@@ -51,15 +52,13 @@ function Registration() {
   const [open, setOpen] = useState(false);
 
   const [err, setErr] = useState(true);
- 
- 
 
   const closeSnackbar = () => {
     setOpen(false);
   };
   const handleModal = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
 
   const {
     register,
@@ -69,12 +68,11 @@ function Registration() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit =  (data1) => {
+  const onSubmit = (data1) => {
     console.log(data1);
     setIsSubmmiting(true);
     // setOpen(true);
-    handleModal()
-     
+    handleModal();
 
     const data = {
       fullname: fullname,
@@ -82,22 +80,20 @@ function Registration() {
       password: password,
       phone_number: phone_number,
     };
-  
- 
-    
 
-     axios
+    axios
       .post("https://mernfood-delivery.onrender.com/api/Register", data)
-      .then( function (data) {
-        console.log(data.status)
-        setErr(false)
-      }).catch( function (err) {
-        setIsSubmmiting(false)
-        setErr(false)
+      .then(function(data) {
+        console.log(data.status);
+        setErr(false);
       })
-      // setErr(true);
+      .catch(function(err) {
+        setIsSubmmiting(false);
+        setErr(false);
+      });
+    // setErr(true);
     setIsSubmmiting(false);
-    console.log(err)
+    console.log(err);
   };
 
   return (
@@ -134,37 +130,36 @@ function Registration() {
                   Registration Form
                 </Typography>
                 <Box marginY={2} />
-               
+
                 <TextField
-                 type='text'
+                  type="text"
                   name="fullname"
                   {...register("fullname")}
                   fullWidth
                   variant="standard"
                   inputProps={{
-                  maxLength:25,
-                  minLength:7,
-                  // pattern:'[a-z]+[a-z]'
+                    maxLength: 25,
+                    minLength: 7,
+                    // pattern:'[a-z]+[a-z]'
                   }}
-                //   rules={{
-                //     required: 'Enter fullname',
-                //     pattern: {
-                //       value:'/^[a-zA-Z]+ [a-zA-Z]/',
-                //       message: 'Please enter a valid fullname'
-                //     }
-                //  }}    
+                  //   rules={{
+                  //     required: 'Enter fullname',
+                  //     pattern: {
+                  //       value:'/^[a-zA-Z]+ [a-zA-Z]/',
+                  //       message: 'Please enter a valid fullname'
+                  //     }
+                  //  }}
                   label="Full Name:"
                   value={fullname}
                   onChange={(event) => {
-                    setFullName(event.target.value)
+                    setFullName(event.target.value);
                   }}
-                
                 />
-            
+
                 {errors.fullname && <p id="error">{errors.fullname.message}</p>}
-                
+
                 <Box marginY={2} />
-             
+
                 <TextField
                   {...register("username")}
                   fullWidth
@@ -178,23 +173,22 @@ function Registration() {
                     setUserName(event.target.value);
                   }}
                   rules={{
-                    required: 'Enter Email',
+                    required: "Enter Email",
                     pattern: {
                       value: /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                      message: 'Please enter a valid Email'
-                    }
-                 }}
+                      message: "Please enter a valid Email",
+                    },
+                  }}
                 />
                 {errors.username && <p id="error">{errors.username.message}</p>}
 
                 <Box marginY={2} />
-               
+
                 <TextField
                   {...register("password")}
                   fullWidth
                   variant="standard"
                   label="Password:"
-                  
                   inputProps={{ maxLength: 6, minLength: 6 }}
                   name="password"
                   type="password"
@@ -202,7 +196,6 @@ function Registration() {
                   onChange={(event) => {
                     setPassword(event.target.value);
                   }}
-                 
                 />
                 {errors.password && <p id="error">{errors.password.message}</p>}
                 <Box marginY={2} />
@@ -212,11 +205,10 @@ function Registration() {
                   variant="standard"
                   required
                   inputProps={{
-                    maxLength:10,
-                    minLength:10,
-                    pattern:"[0-9]{10}"
+                    maxLength: 10,
+                    minLength: 10,
+                    pattern: "[0-9]{10}",
                   }}
-                  
                   label="Phone_Number:"
                   type="tel"
                   value={phone_number}
@@ -243,8 +235,7 @@ function Registration() {
                 <Link marginX={26} underline="none" href="/">
                   Login
                 </Link>
-                {err ?
-
+                {err ? (
                   <Snackbar
                     open={open}
                     autoHideDuration={300}
@@ -255,19 +246,18 @@ function Registration() {
                       Hello {username},Successfully Register!
                     </Alert>
                   </Snackbar>
-                :
+                ) : (
                   <Snackbar
                     open={open}
                     onClose={closeSnackbar}
                     anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                    >
+                  >
                     <Alert onClose={closeSnackbar} severity="error">
                       Oops! <strong>{username}</strong>Already Exist,try again
                       later.
                     </Alert>
                   </Snackbar>
-                   
-                }
+                )}
               </Box>
             </form>
           </Paper>
