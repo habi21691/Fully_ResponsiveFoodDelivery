@@ -30,7 +30,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 
 
-  const [error, setError] = useState(true);
+  const [error, setError] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
 
@@ -221,7 +221,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                 </Link>
               </Box>
               <Stack>
-                {error ? (
+                {!error ? (
                   <Snackbar
                     open={openSnackbar}
                     autoHideDuration={700}
