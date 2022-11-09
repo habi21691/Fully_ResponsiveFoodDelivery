@@ -24,7 +24,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 const schema = yup.object().shape({
   fullname: yup.string().required("Fullname Require *"),
-  username: yup.string().required("Username Require * "),
+  username: yup.string().email().required("Email Require * "),
   password: yup.string().required("Password Require *"),
   phone_number: yup
     .number()
@@ -150,7 +150,7 @@ function Registration() {
                   {...register("username")}
                   fullWidth
                   variant="standard"
-                  inputProps={{ maxLength: 14, minLength: 6 }}
+                  inputProps={{ maxLength: 30, minLength: 6 }}
                   label="User Name:"
                   type="text"
                   name="username"
