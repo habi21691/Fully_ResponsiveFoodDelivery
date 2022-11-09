@@ -134,7 +134,8 @@ function Registration() {
                   inputProps={{
                   maxLength:25,
                   minLength:7,
-                  inputMode:'text'
+                  inputMode:'text',
+                  pattern:'[a-zA-Z]'
                   }}
                   label="Full Name:"
                   value={fullname}
