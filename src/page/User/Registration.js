@@ -194,7 +194,7 @@ const handleMouseDownPassword = (event) => {
                 {errors.username && <p id="error">{errors.username.message}</p>}
 
                 <Box marginY={2} />
-                <FormControl sx={{ m: 1, width: "25ch" }} 
+                <FormControl sx={{ m: 1 }} 
                         variant="standard">
                           
                         <InputLabel 
