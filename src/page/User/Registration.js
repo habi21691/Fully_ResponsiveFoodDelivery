@@ -134,12 +134,13 @@ function Registration() {
                   inputProps={{
                   maxLength:25,
                   minLength:7,
-                  pattern:/^[a-zA-Z-'. ]+$/
+                  // pattern:/^[a-zA-Z-' ]+[a-zA-Z-']+[a-zA-Z-']/
                   }}
+                  pattern="^(?:((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-.\s])){1,}(['’,\-\.]){0,1}){2,}(([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-. ]))*(([ ]+){0,1}(((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){1,})(['’\-,\.]){0,1}){2,}((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){2,})?)*)$"
                   label="Full Name:"
                   value={fullname}
                   onChange={(event) => {
-                    setFullName(event.target.value.trim())
+                    setFullName(event.target.value)
                   }}
                 
                 />
@@ -200,7 +201,7 @@ function Registration() {
                   type="tel"
                   value={phone_number}
                   onChange={(event) => {
-                    setPhone_Number(event.target.value);
+                    setPhone_Number(event.target.value.trim());
                   }}
                 />
                 {errors.phone_number && (
