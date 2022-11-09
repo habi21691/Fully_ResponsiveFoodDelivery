@@ -15,6 +15,8 @@ import Snackbar from "@mui/material/Snackbar";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Input from "@mui/material/Input";
+import InputLabel from "@mui/material";
+import FormControl from "@mui/material";
 import * as yup from "yup";
 import { SettingsInputSvideoSharp } from "@mui/icons-material";
 
@@ -45,6 +47,15 @@ function Registration() {
 
   const [err, setErr] = useState(true);
  
+  const [showPassword, setShowPassword] = useState(false)
+
+  const handleClickShowPassword = () => {
+    setValues({
+        ...values,
+        showPassword: !values.showPassword,
+    });
+};
+
   const closeSnackbar = () => {
     setOpen(false);
   };
@@ -125,6 +136,9 @@ function Registration() {
                   Registration Form
                 </Typography>
                 <Box marginY={2} />
+                <FormControl>
+
+                </FormControl>
                 <Input
                  type='text'
                   name="fullname"
@@ -178,7 +192,33 @@ function Registration() {
                 {errors.username && <p id="error">{errors.username.message}</p>}
 
                 <Box marginY={2} />
-                <TextField
+                <FormControl sx={{ m: 1, width: "25ch" }} 
+                        variant="standard">
+                        <InputLabel 
+                        htmlFor="standard-adornment-password">
+                            Password
+                        </InputLabel>
+                        <Input
+                            id="standard-adornment-password"
+                            type={showPassword ? "text" : "password"}
+                            value={showPassword.password}
+                            onChange={handleChange("password")}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                    >
+                                        {showPassword 
+                                        ? <VisibilityOff /> 
+                                        : <Visibility />}
+                                    </IconButton>
+                                </InputAdornment>
+                            }
+                        />
+                    </FormControl>
+                {/* <TextField
                   {...register("password")}
                   fullWidth
                   variant="standard"
@@ -190,7 +230,7 @@ function Registration() {
                   onChange={(event) => {
                     setPassword(event.target.value);
                   }}
-                />
+                /> */}
                 {errors.password && <p id="error">{errors.password.message}</p>}
                 <Box marginY={2} />
                 <TextField
