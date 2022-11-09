@@ -139,15 +139,15 @@ function Registration() {
                   inputProps={{
                   maxLength:25,
                   minLength:7,
-                  pattern:'[a-z]+[a-z]'
+                  // pattern:'[a-z]+[a-z]'
                   }}
-                  rules={{
-                    required: 'Enter fullname',
-                    pattern: {
-                      value:'/^[a-zA-Z]+ [a-zA-Z]/',
-                      message: 'Please enter a valid fullname'
-                    }
-                 }}    
+                //   rules={{
+                //     required: 'Enter fullname',
+                //     pattern: {
+                //       value:'/^[a-zA-Z]+ [a-zA-Z]/',
+                //       message: 'Please enter a valid fullname'
+                //     }
+                //  }}    
                   label="Full Name:"
                   value={fullname}
                   onChange={(event) => {
