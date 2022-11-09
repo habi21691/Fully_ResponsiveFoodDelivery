@@ -140,7 +140,7 @@ function Registration() {
                   inputProps={{
                   maxLength:25,
                   minLength:7,
-                   
+                  inputMode:'text'
                   }}
                   label="Full Name:"
                   value={fullname}
@@ -191,7 +191,7 @@ function Registration() {
                   inputProps={{
                     maxLength:10,
                     minLength:10,
-                    pattern:"[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    pattern:"[0-9]{10}"
                   }}
                   
                   label="Phone_Number:"
