@@ -134,10 +134,15 @@ function Registration() {
                   inputProps={{
                   // maxLength:25,
                   // minLength:7,
-                  pattern:'/^[a-zA-Z]+ [a-zA-Z]+$/'
+                  // pattern:'/^[a-zA-Z]+ [a-zA-Z]+$/'
                   }}
-                  // pattern="^(?:((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-.\s])){1,}(['’,\-\.]){0,1}){2,}(([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-. ]))*(([ ]+){0,1}(((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){1,})(['’\-,\.]){0,1}){2,}((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){2,})?)*)$"
-                  label="Full Name:"
+                  rules={{
+                    required: 'Enter fullname',
+                    pattern: {
+                      value:/^[a-zA-Z]+ [a-zA-Z]+$/,
+                      message: 'Please enter a valid fullname'
+                    }
+                 }}                  label="Full Name:"
                   value={fullname}
                   onChange={(event) => {
                     setFullName(event.target.value)
