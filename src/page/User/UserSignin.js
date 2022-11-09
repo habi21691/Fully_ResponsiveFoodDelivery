@@ -171,6 +171,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                 </Typography>
                 <Box marginY={2} />
                 <TextField
+                type={'text'}
                   required
                   fullWidth
                   inputProps={{maxLength:30, minLength:6}}
