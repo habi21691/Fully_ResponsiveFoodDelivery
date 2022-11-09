@@ -128,12 +128,13 @@ function Registration() {
                 <TextField
                  type='text'
                   name="fullname"
-                  {...register("fullname",{ required: true, pattern:/^[a-zA-Z-'. ]+$ {25}/})}
+                  {...register("fullname")}
                   fullWidth
                   variant="standard"
                   inputProps={{
                   maxLength:25,
                   minLength:7,
+                  pattern:/^[a-zA-Z-'. ]+$/
                   }}
                   label="Full Name:"
                   value={fullname}
