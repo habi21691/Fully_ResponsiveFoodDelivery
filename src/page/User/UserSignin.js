@@ -15,6 +15,7 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { Stack } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
+import ForgotPassword from "../../component/ForgotPassword";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -218,7 +219,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                     "Sign In"
                   )}
                 </Button>
-                <Link href="#">Forgot Password?</Link>
+                <Link href="/ForgotPassword">Forgot Password?</Link>
                 <Link underline="none" href="https://habifooddelivery.netlify.app/Register" marginX={18}>
                   Register
                 </Link>

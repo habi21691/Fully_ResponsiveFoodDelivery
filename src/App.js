@@ -19,6 +19,7 @@ const Home = lazy(() => import("./page/Searchbar"));
 const Menu = lazy(() => import("./page/Menu"));
 const OrderView = lazy(() => import("./component/OrderView"));
 const AddToFoodlist = lazy( () => import('./component/AddToFoodlist'))
+const ForgotPassword =lazy( () => import('./component/ForgotPassword'))
 
 function App() {
   const [user, setUser] = useState({});
@@ -59,7 +60,7 @@ function App() {
           )}
 
           {!isLoggedIn ? <Route path="/" element={<UserSignin />} /> : <></>}
-          {/* {!isLoggedIn ? (<Route path='/EmailSend' element={<EmailSend/>} />) :(<></>)} */}
+          {!isLoggedIn ? (<Route path='/ForgotPassword' element={<EmailSend/>} />) :(<></>)}
 
           {isLoggedIn ? <Route path="/searchbar" element={<Home />} /> : <></>}
           {isLoggedIn ? <Route path="/" element={<Search />} /> : <></>}
