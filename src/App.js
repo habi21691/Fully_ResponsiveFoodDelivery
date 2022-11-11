@@ -60,7 +60,7 @@ function App() {
           )}
 
           {!isLoggedIn ? <Route path="/" element={<UserSignin />} /> : <></>}
-          {!isLoggedIn ? (<Route path='/ForgotPassword' element={<EmailSend/>} />) :(<></>)}
+          {!isLoggedIn ? (<Route path='/ForgotPassword' element={<ForgotPassword/>} />) :(<></>)}
 
           {isLoggedIn ? <Route path="/searchbar" element={<Home />} /> : <></>}
           {isLoggedIn ? <Route path="/" element={<Search />} /> : <></>}
