@@ -159,7 +159,7 @@ function Admin_dashboard() {
                 />
 
                 <Grid item xs={12}>
-                  <Paper
+                  <Box
                     sx={{ p: 2, display: "flex", flexDirection: "column" }}
                   >
 
@@ -170,7 +170,7 @@ function Admin_dashboard() {
                       rowsPerPageOptions={[9]}
                       checkboxSelection
                     />
-                  </Paper>
+                  </Box>
                 </Grid>
               </Grid>
               <Copyright sx={{ pt: 14 }} />
