@@ -77,13 +77,13 @@ function Admin_dashboard() {
 
   const mdTheme = createTheme();
 
-  const [data, setData] = useState('')
+  const [data, setData] = useState([])
  
   useEffect( () => {
      
       const getdata = async () => {
          await axios.post('https://mernfood-delivery.onrender.com/api/feachingDriver').then( (res) => {
-          console.log(res)
+        
           setData(res.data)
          })
       }
