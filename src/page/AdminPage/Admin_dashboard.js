@@ -75,7 +75,7 @@ const columns = [
     editable: true,
   },
   {
-    field: 'phoone_number',
+    field: 'phone_number',
     headerName: 'Phone Number',
     width: 150,
     editable: true,
