@@ -80,7 +80,7 @@ function Admin_dashboard() {
   useEffect( () => {
      
       const getdata = async () => {
-         await axios.post('http://localhost:5000/api/feachingDriver').then( (res) => {
+         await axios.post('https://mernfood-delivery.onrender.com/api/feachingDriver').then( (res) => {
           console.log(res)
           setData(res.data)
          })
