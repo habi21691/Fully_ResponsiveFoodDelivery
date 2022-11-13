@@ -8,6 +8,28 @@ import {
   Button,
 } from "@mui/material";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+
+import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
+
+const schema = yup.object().shape({
+  fullname: yup
+    .string()
+    .required("Please enter the required field")
+    .matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for this field "),
+  username: yup
+    .string()
+    .email()
+    .required("Email Require * "),
+  password: yup.string().required("Password Require *"),
+  phone_number: yup
+    .number()
+    .positive()
+    .integer()
+    .required("PhoneNumber Require *"),
+});
 
 function AssignDriver(props) {
   const [fullname, setFullName] = useState("");
@@ -15,12 +37,41 @@ function AssignDriver(props) {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
+
+  
+  const{
+    register,
+    handeleSubmit,
+    formState:{error}
+  }= useForm({
+    resolver: yupResolver(schema),
+  })
+
+  async function onSubmit (data1) {
+   
+    const data = {
+        fullname: fullname,
+        username: username,
+        password: password,
+        address: address
+    }
+    
+await axios.post('', data).then( (res) => {
+
+}).catch( (err) => {
+
+})
+    
+   } 
+
+
   return (
     <div>
       <Dialog open={props.open} onClose={props.handleClose}>
         <DialogTitle>Driver Registeration</DialogTitle>
         <DialogContent>
           <TextField
+          {...register('fullname')}
             label="FullName"
             fullWidth
             variant="standard"
@@ -30,6 +81,7 @@ function AssignDriver(props) {
             }}
           />
           <TextField
+          {...register('username')}
             value={username}
             label="UserName"
             fullWidth
@@ -39,6 +91,7 @@ function AssignDriver(props) {
             }}
           />
           <TextField
+          {...register('address')}
             label="address"
             variant="standard"
             value={address}
@@ -50,6 +103,7 @@ function AssignDriver(props) {
           />
 
           <TextField
+            {...register('password')}
             label="password"
             type={"password"}
             fullWidth
@@ -61,7 +115,7 @@ function AssignDriver(props) {
           />
         </DialogContent>
         <DialogActions>
-          <Button>Add Driver</Button>
+          <Button onClick={handeleSubmit(onSubmit)}>Add Driver</Button>
           <Button onClick={props.handleClose}>Cancel</Button>
         </DialogActions>
       </Dialog>
