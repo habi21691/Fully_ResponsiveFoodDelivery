@@ -156,7 +156,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
           <Paper
             sx={{
               p: 2,
-              height: 500,
+              height: 300,
               width: 300,
               marginTop:'5em',
               backgroundColor: (theme) =>
