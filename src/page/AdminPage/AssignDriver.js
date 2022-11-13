@@ -36,7 +36,8 @@ function AssignDriver(props) {
   const [address, setAddress] = useState("");
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
+  const [role, setRole] =useState('')
+ 
 
   
   const{
@@ -53,7 +54,8 @@ function AssignDriver(props) {
         fullname: fullname,
         username: username,
         password: password,
-        address: address
+        address: address,
+        role: role
     }
     
 await axios.post('', data).then( (res) => {
@@ -111,6 +113,17 @@ await axios.post('', data).then( (res) => {
             value={password}
             onChange={(event) => {
               setPassword(event.target.password);
+            }}
+          />
+           <TextField
+            {...register('role')}
+            label="password"
+             hidden={true}
+            fullWidth
+            variant="standard"
+            value={role}
+            onChange={(event) => {
+              setRole(event.target.role)
             }}
           />
         </DialogContent>
