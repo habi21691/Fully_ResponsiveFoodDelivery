@@ -88,7 +88,7 @@ function Admin_dashboard() {
          })
       }
       getdata();
-  })
+  },[])
   if (!data) return "no data";
 
   let count = 0;
