@@ -42,13 +42,13 @@ function AssignDriver(props) {
   
   const{
     register,
-    handeleSubmit,
+    handleSubmit,
     formState:{error}
   }= useForm({
     resolver: yupResolver(schema),
   })
 
-  async function onSubmit (data1) {
+  const onSubmit = async (data1) =>{
    
     const data = {
         fullname: fullname,
@@ -128,7 +128,7 @@ await axios.post('', data).then( (res) => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handeleSubmit(onSubmit)}>Add Driver</Button>
+          <Button onClick={handleSubmit(onSubmit)}>Add Driver</Button>
           <Button onClick={props.handleClose}>Cancel</Button>
         </DialogActions>
       </Dialog>
