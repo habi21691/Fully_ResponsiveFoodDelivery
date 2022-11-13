@@ -59,12 +59,41 @@ function Copyright(props) {
 function Admin_dashboard() {
   const [openDriver, setOpenDriver] = useState(true);
 
-  const columns= React.useMemo( () =>[
-    {field:'id', headerName:'ID', width:90},
-    {field:'firstname', headerName:'Fullname', width:150, editable:false},
-    {field:'username', headerName:'UserName', width:90}
-    
-    ])
+
+const columns = [
+  { field: 'id', headerName: 'ID', width: 90 },
+  {
+    field: 'firstName',
+    headerName: 'First name',
+    width: 150,
+    editable: true,
+  },
+  {
+    field: 'lastName',
+    headerName: 'Last name',
+    width: 150,
+    editable: true,
+  },
+  {
+    field: 'age',
+    headerName: 'Age',
+    type: 'number',
+    width: 110,
+    editable: true,
+  },
+  {
+    field: 'fullName',
+    headerName: 'Full name',
+    description: 'This column has a value getter and is not sortable.',
+    sortable: false,
+    width: 160,
+    valueGetter: (params) =>
+      `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+  },
+];
+
+
+
     
   const handleClose = () => {
     setOpen(false);
@@ -160,7 +189,7 @@ function Admin_dashboard() {
 
                 <Grid item xs={12}>
                   <Box
-                    sx={{ p: 2, display: "flex", flexDirection: "column" }}
+                    sx={{ height:400, width:'100%'}}
                   >
 
                     <DataGrid
