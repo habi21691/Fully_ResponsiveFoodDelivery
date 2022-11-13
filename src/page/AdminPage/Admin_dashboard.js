@@ -61,7 +61,9 @@ function Admin_dashboard() {
 
   const columns= React.useMemo( () =>[
     {field:'id', headerName:'ID', width:90},
-    {field:'firstname', headerName:'Fullname', width:150, editable:false}
+    {field:'firstname', headerName:'Fullname', width:150, editable:false},
+    {field:'username', headerName:'UserName', width:90}
+    
     ])
     
   const handleClose = () => {
