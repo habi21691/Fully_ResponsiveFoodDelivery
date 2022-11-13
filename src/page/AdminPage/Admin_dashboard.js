@@ -1,54 +1,182 @@
-import Grid from '@mui/material/Grid'
-import React, { useContext } from 'react'
-import Appbar from '../../sharedComponent/Appbar'
-import { experimentalStyled as styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
-import AuthContext from '../../Contexts/AuthContext';
-import image from '../../asset/she.webp'
-import image2 from '../../asset/adminPic.webp'
+import Grid from "@mui/material/Grid";
+import React, { useContext, useState,useEffect, useMemo } from "react";
+import Appbar from "../../sharedComponent/Appbar";
+import {
+  experimentalStyled as styled,
+  createTheme,
+  ThemeProvider,
+} from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
+import AuthContext from "../../Contexts/AuthContext";
+import image from "../../asset/she.webp";
+import image2 from "../../asset/adminPic.webp";
+import Chart from "../../component/Chart";
+import { Button, Container } from "@mui/material";
+import { mainListItems, secondaryListItems } from "../AdminPage/listItem"; // import Orders from '../../component/OrderView'
+import MuiDrawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import Toolbar from "@mui/material/Toolbar";
+import Divider from "@mui/material/Divider";
+import List from "@mui/material/List";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import Typography from "@mui/material/Typography";
+import Badge from "@mui/material/Badge";
+import { Box } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import CssBaseline from "@mui/material/CssBaseline";
+import Orders from "../../component/OrderView";
+import Deposits from "./Deposite";
+import Link from "@mui/material/Link";
+import axios from "axios";
+import AssignDriver from "./AssignDriver";
 
- function Admin_dashboard() {
-  const { user } = useContext(AuthContext);
 
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
+
+import { DataGrid } from "@mui/x-data-grid";
+import { rowsStateInitializer } from "@mui/x-data-grid/internals";
+
+
+
+
+function Copyright(props) {
+  return (
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      <Link color="inherit" href="https://habifooddelivery.netlify.app">
+        My WebSite
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
+function Admin_dashboard() {
+  const [openDriver, setOpenDriver] = useState(true);
+
+  const columns= React.useMemo( () =>[
+    {field:'id', headerName:'ID', width:90},
+    {field:'firstname', headerName:'Fullname', width:150, editable:false}
+    ])
+    
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const [open, setOpen] = useState(false);
+
+  function handleOpen() {
+    setOpen(true);
+  }
+
+  const mdTheme = createTheme();
+
+  const [data, setData] = useState('')
+ 
+  useEffect( () => {
+     
+      const getdata = async () => {
+         await axios.post('http://localhost:5000/api/feachingDriver').then( (res) => {
+          console.log(res)
+          setData(res.data)
+         })
+      }
+      getdata();
+  })
+  if (!data) return "no data";
+
+  let count = 0;
+  let displays = data.map((order) => {
+    count += 1;
+
+    return { ...order, id: count };
+  });
 
   return (
     <div>
       <Appbar />
 
-      {user.role}
+      <ThemeProvider theme={mdTheme}>
+        <Box sx={{ display: "flex" }}>
+          <CssBaseline />
 
-      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} sx={{pt:2,pl:1}}>
-        <Grid item xs={12} md={6}>
-          <img
-            style={{
-              width: '100%',
-              height: 'auto'
+          <Box
+            component="main"
+            sx={{
+              backgroundColor: (theme) =>
+                theme.palette.mode === "light"
+                  ? theme.palette.grey[100]
+                  : theme.palette.grey[900],
+              flexGrow: 1,
+              height: "100vh",
+              overflow: "auto",
             }}
-            src={image}
+          >
+            <Toolbar />
+            <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+              <Grid container spacing={3}>
+                {/* Chart */}
+                <Grid item xs={12} md={8} lg={9}>
+                  <Paper
+                    sx={{
+                      p: 2,
+                      display: "flex",
+                      flexDirection: "column",
+                      height: 240,
+                    }}
+                  >
+                    <Chart />
+                  </Paper>
+                </Grid>
+                {/* Recent Deposits */}
+                <Grid item xs={12} md={4} lg={3}>
+                  <Paper
+                    sx={{
+                      p: 2,
+                      display: "flex",
+                      flexDirection: "column",
+                      height: 240,
+                    }}
+                  >
+                    <Deposits />
+                  </Paper>
+                </Grid>
+                <Button onClick={handleOpen} variant="contained" sx={{ m: 5 }}>
+                  Add Driver
+                </Button>
+                <AssignDriver
+                  open={open}
+                  setOpen={setOpen}
+                  openDriver={openDriver}
+                  setOpenDriver={setOpenDriver}
+                  handleClose={handleClose}
+                />
 
+                <Grid item xs={12}>
+                  <Paper
+                    sx={{ p: 2, display: "flex", flexDirection: "column" }}
+                  >
 
-          />
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <img
-            style={{
-              width:'100%',
-              height:'auto'
-            }}
-            src={image2}
-          />
-        </Grid>
-       
-      </Grid>
-
+                    <DataGrid
+                      rows={displays}
+                      columns={columns}
+                      pageSize={9}
+                      rowsPerPageOptions={[9]}
+                      checkboxSelection
+                    />
+                  </Paper>
+                </Grid>
+              </Grid>
+              <Copyright sx={{ pt: 14 }} />
+            </Container>
+          </Box>
+        </Box>
+      </ThemeProvider>
     </div>
-  )
+  );
 }
 export default Admin_dashboard;

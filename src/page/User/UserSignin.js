@@ -15,8 +15,8 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { Stack } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
-import ForgotPassword from "../../component/ForgotPassword";
-
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -36,7 +36,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 
 
-
+  // const notify = () => toast("Wow so easy!");
   
 
   const navigator = useNavigate();
@@ -151,6 +151,8 @@ const Alert = React.forwardRef(function Alert(props, ref) {
         }}
       >
         <Grid item xs={8} >
+          {/* <Button onClick={notify}>notify</Button>
+          <ToastContainer/> */}
           <Paper
             sx={{
               p: 2,
