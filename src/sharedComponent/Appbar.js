@@ -36,6 +36,10 @@ export default function Home() {
         {
             name: 'Contact',
             link: '/Contact'
+        },
+        {
+            name: 'Message',
+            link: '/Message'
         }
     ];
  }
