@@ -221,7 +221,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                     "Sign In"
                   )}
                 </Button>
-                <Link href="/ForgotPassword">Forgot Password?</Link>
+                <Link underline="none" href="/ForgotPassword">Forgot Password?</Link>
                 <Link underline="none" href="https://habifooddelivery.netlify.app/Register" marginX={18}>
                   Register
                 </Link>
