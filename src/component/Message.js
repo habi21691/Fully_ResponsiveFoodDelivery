@@ -7,18 +7,30 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Snackbar, Alert } from "@mui/material";
+import axios from "axios";
 
 function Message() {
   const [open, setOpen] = useState(false);
   const [replay, setReplay] = useState("");
+  const [message, setMessage] = useState('')
 
-  const handleSubmit = () => {
-    const data = {
-      replay: replay,
-    };
-   setOpen(true)
+  const handleSubmit = (replay) => {
+   
+      setMessage({
+      ...message,
+        replay: replay
+      })
+    
+
+    axios.post('https://mernfood-delivery.onrender.com/api/message', message).then( (res)=> {
+
+      if(res.status === 200)
+     setOpen(true)
+    }).catch( (err) => {
+      console.log(err)
+    })
  
-    console.log(data);
+    console.log(message);
   };
   
   function handleClose  ()  {
