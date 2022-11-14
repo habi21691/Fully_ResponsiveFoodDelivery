@@ -19,7 +19,7 @@ function Message() {
    
       setMessage({
       ...message,
-        replay: replay
+        replay: replay  
       })
     
 
