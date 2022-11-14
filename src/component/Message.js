@@ -6,6 +6,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { Snackbar, Alert } from "@mui/material";
 
 function Message() {
   const [open, setOpen] = useState(false);
@@ -15,16 +16,15 @@ function Message() {
     const data = {
       replay: replay,
     };
-
-     const openMesage = () => {
-      setOpen(true)
-     }
-    const handleClose = () => {
-      setOpen(false);
-    };
-
+   setOpen(true)
+ 
     console.log(data);
   };
+  
+  function handleClose  ()  {
+    setOpen(false);
+  };
+
 
   return (
     <div>
@@ -53,18 +53,12 @@ function Message() {
             <MenuItem value={"No"}>I didn't have it!!</MenuItem>
           </Select>
         </FormControl>
-        <Button onClick={handleSubmit}>
+        <Button onClick={handleSubmit} onClose={handleClose}>
           <ReplyIcon />
         </Button>
-      </Box>
 
-      <Snackbar
-        open={openMesage}
-        onClose={() => {
-          handleClose();
-        }}
-        autoHideDuration={2000}
-      >
+      </Box>
+      <Snackbar open={open}  autoHideDuration={2000}>
         <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
           Message Sent!
         </Alert>
