@@ -8,6 +8,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Snackbar, Alert } from "@mui/material";
 import axios from "axios";
+import Appbar from '../sharedComponent/Appbar'
 
 function Message() {
   const [open, setOpen] = useState(false);
@@ -40,6 +41,7 @@ function Message() {
 
   return (
     <div>
+      <Appbar/>
       <Box
         sx={{
           display: "flex",
