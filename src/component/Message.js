@@ -26,13 +26,9 @@ function Message() {
             justifyContent:"center",
             alignItems:"center",
             minHeight:"100vh",
-            backgroundColor: '#243438',
+            backgroundColor: '#f792ee',
     boxShadow: '0 1px 0 0 rgba(170,170,170,0.01)'
-        //   backgroundColor: "primary.dark",
-        //   "&:hover": {
-        //     backgroundColor: "primary.main",
-        //     opacity: [0.9, 0.8, 0.7],
-        //   },
+       
         }}
       >
     <FormControl variant="standard" sx={{m:1, width:250 }}>
