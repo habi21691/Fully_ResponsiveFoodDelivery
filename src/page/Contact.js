@@ -78,7 +78,7 @@ function Contact() {
       message: message,
     };
     // console.log(data)
-    const { status } = await axios.post(
+    const { status } = await axios.get(
       "https://mernfood-delivery.onrender.com/api/contact",
       data
     );
