@@ -199,7 +199,7 @@ function Admin_dashboard() {
                           <Grid>
                             <TableContainer component={Paper}>
                               <Table
-                                sx={{ minWidth: 300 }}
+                                sx={{ minWidth: 250 }}
                                 size="small"
                                 aria-label="a dense table"
                               >
