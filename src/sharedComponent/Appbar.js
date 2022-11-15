@@ -53,10 +53,7 @@ export default function Home() {
         name: "Add_Food",
         link: "/AddToFoodlist",
       },
-      {
-        name: "feadback",
-        link: "/feadback",
-      },
+     
     ];
   } else if (user.role === "Delivery") {
     pages = [
