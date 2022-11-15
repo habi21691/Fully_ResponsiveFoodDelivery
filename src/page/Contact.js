@@ -186,7 +186,7 @@ function Contact() {
                       <Button
                         type="submit"
                         variant="contained"
-                        // onClick={handleClick}
+                        onClick={handleSubmit(onSubmit)}
                         // color="primary"
                       >
                         <SendIcon sx={{fontSize:30}}/>
