@@ -23,7 +23,6 @@ import SendIcon from '@mui/icons-material/Send';
 import ResetTvIcon from '@mui/icons-material/ResetTv';
 import {Alert, Snackbar} from "@mui/material";
 
-
 const Schema = yup.object().shape({
   name: yup.string().required("Name Require *"),
   email: yup

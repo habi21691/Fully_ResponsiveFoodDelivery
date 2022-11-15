@@ -39,6 +39,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Modal from "@mui/material/Modal";
+import MailIcon from '@mui/icons-material/Mail'
+
 
 function Copyright(props) {
   return (
@@ -266,7 +268,7 @@ function Admin_dashboard() {
                           badgeContent={getRows == "0" ? "0" : getRows}
                           color="error"
                         >
-                          <NotificationsIcon />
+                          <MailIcon />
                         </Badge>
                       </IconButton>
                     </MenuItem>
