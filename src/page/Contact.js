@@ -160,6 +160,7 @@ function Contact() {
                       {...register("message")}
                       id="message"
                       label="Message"
+                      inputProps={{minLength:2, maxLength:200}}
                       name="message"
                       onChange={(event) => {
                         setMessege(event.target.value);
