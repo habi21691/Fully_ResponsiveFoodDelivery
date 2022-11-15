@@ -72,7 +72,7 @@ function Contact() {
 
   const onSubmit = async (data1) => {
     // event.preventDefault();
-
+ console.log(data1)
     const data = {
       name: name,
       email: email,
