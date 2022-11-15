@@ -21,7 +21,6 @@ const OrderView = lazy(() => import("./component/OrderView"));
 const AddToFoodlist = lazy( () => import('./component/AddToFoodlist'))
 const ForgotPassword =lazy( () => import('./component/ForgotPassword'))
 // const Message =lazy( () => import('./component/Message'))
-const Feadback  = lazy( () => import('./page/AdminPage/Feadback'))
 function App() {
   const [user, setUser] = useState({});
   const [waiting, setWating] = useState(false);
@@ -83,7 +82,6 @@ function App() {
             <></>
           )}
           {isLoggedIn ? <Route path="/Task" element={<Task />} /> : <></>}
-          {isLoggedIn ? <Route path="/feadbac" element={<Feadback />} /> : <></>}
 
         </Routes>
       </Suspense>
