@@ -23,13 +23,13 @@ function Message() {
       })
     
 
-    axios.post('https://mernfood-delivery.onrender.com/api/message', message).then( (res)=> {
+    // axios.post('https://mernfood-delivery.onrender.com/api/message', message).then( (res)=> {
 
-      if(res.status === 200)
-     setOpen(true)
-    }).catch( (err) => {
-      console.log(err)
-    })
+    //   if(res.status === 200)
+    //  setOpen(true)
+    // }).catch( (err) => {
+    //   console.log(err)
+    // })
  
     console.log(message);
   };
