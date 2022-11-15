@@ -14,8 +14,8 @@ import MenuItem from "@mui/material/MenuItem";
 import RoomServiceOutlinedIcon from "@mui/icons-material/RoomServiceOutlined";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../Contexts/AuthContext";
-import Badge  from "@mui/material/Badge";
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import Badge from "@mui/material/Badge";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
 export default function Home() {
   const { user, setLog, setUser, setCookie } = useContext(AuthContext);
@@ -203,22 +203,7 @@ export default function Home() {
           >
             Food Delivery
           </Typography>
-          <MenuItem
-            //  onClick={handleOpen}
-             >
-              <IconButton
-                size="large"
-                aria-label="show 17 new notifications"
-                color="inherit"
-              >
-                <Badge
-                //   badgeContent={getRows == "0" ? "0" : getRows}
-                  color="error"
-                >
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-            </MenuItem>
+
           <Box
             sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, mr: 30 }}
           >
@@ -235,7 +220,7 @@ export default function Home() {
               </Button>
             ))}
           </Box>
-
+         
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton
@@ -246,22 +231,7 @@ export default function Home() {
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
-            <MenuItem
-            //  onClick={handleOpen}
-             >
-              <IconButton
-                size="large"
-                aria-label="show 17 new notifications"
-                color="inherit"
-              >
-                <Badge
-                //   badgeContent={getRows == "0" ? "0" : getRows}
-                  color="error"
-                >
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-            </MenuItem>
+
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"

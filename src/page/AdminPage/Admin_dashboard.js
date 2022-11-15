@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Grid";
-import React, { useContext, useState,useEffect, useMemo } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Appbar from "../../sharedComponent/Appbar";
 import {
   experimentalStyled as styled,
@@ -31,8 +31,14 @@ import Link from "@mui/material/Link";
 import axios from "axios";
 import AssignDriver from "./AssignDriver";
 import { DataGrid } from "@mui/x-data-grid";
-
-
+import MenuItem from "@mui/material//MenuItem";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Modal from "@mui/material/Modal";
 
 function Copyright(props) {
   return (
@@ -53,40 +59,54 @@ function Copyright(props) {
 }
 function Admin_dashboard() {
   const [openDriver, setOpenDriver] = useState(true);
- 
+  const [getRows, setRows] = useState([]);
+  const [loadData, setData2] = useState([]);
 
+  const [message, setMessage] = useState(false);
 
-
-
-
-const columns = [
-  { field: 'id', headerName: 'ID', width: 90 },
-  {
-    field: 'fullname',
-    headerName: 'Full Name',
-    width: 150,
-    editable: true,
-  },
-  {
-    field: 'username',
-    headerName: 'UserName',
-    width: 150,
-    editable: true,
-  },
-  {
-    field: 'phone_number',
-    headerName: 'Phone Number',
-    width: 150,
-    editable: true,
+  function handleMessage () {
+    setMessage(true)
   }
- 
-];
 
+  useEffect(() => {
+    const getnotification = async () => {
+      await axios
+        .get("https://mernfood-delivery.onrender.com/api/getfeadback")
+        .then((res) => {
+          console.log(res.data);
+          setData2(res.data);
+          setRows(res.data.length);
+        });
+    };
+    getnotification();
+  }, []);
 
+  const columns = [
+    { field: "id", headerName: "ID", width: 90 },
+    {
+      field: "fullname",
+      headerName: "Full Name",
+      width: 150,
+      editable: true,
+    },
+    {
+      field: "username",
+      headerName: "UserName",
+      width: 150,
+      editable: true,
+    },
+    {
+      field: "phone_number",
+      headerName: "Phone Number",
+      width: 150,
+      editable: true,
+    },
+  ];
 
-    
   const handleClose = () => {
     setOpen(false);
+    setMessage(false)
+
   };
   const [open, setOpen] = useState(false);
 
@@ -96,18 +116,18 @@ const columns = [
 
   const mdTheme = createTheme();
 
-  const [data, setData] = useState([])
- 
-  useEffect( () => {
-     
-      const getdata = async () => {
-         await axios.post('https://mernfood-delivery.onrender.com/api/feachingDriver').then( (res) => {
-        
-          setData(res.data)
-         })
-      }
-      getdata();
-  },[])
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const getdata = async () => {
+      await axios
+        .post("https://mernfood-delivery.onrender.com/api/feachingDriver")
+        .then((res) => {
+          setData(res.data);
+        });
+    };
+    getdata();
+  }, []);
   if (!data) return "no data";
 
   let count = 0;
@@ -165,6 +185,92 @@ const columns = [
                   >
                     <Deposits />
                   </Paper>
+                  <Box>
+                    <Modal
+                      open={message}
+                      onClose={handleClose}
+                      aria-labelledby="modal-modal-title"
+                      aria-describedby="modal-modal-description"
+                    >
+                      <Box sx={style}>
+                        <Grid container spacing={2}>
+                          <Grid>
+                            <TableContainer component={Paper}>
+                              <Table
+                                sx={{ minWidth: 300 }}
+                                size="small"
+                                aria-label="a dense table"
+                              >
+                                <TableHead>
+                                  <TableRow>
+                                    <TableCell component="th">
+                                      <b> Name</b>
+                                    </TableCell>
+                                    <TableCell component="th">
+                                      <b>Email</b>
+                                    </TableCell>
+                                    <TableCell component="th">
+                                      <b>message</b>
+                                    </TableCell>
+                                  </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                  {loadData.map((row, index) => (
+                                    <TableRow
+                                      style={{
+                                        backgroundColor:
+                                          row.status == "0"
+                                            ? "#ccffcc"
+                                            : "white",
+                                      }}
+                                      key={index}
+                                    >
+                                      <TableCell> {row.name} </TableCell>
+                                      <TableCell>{row.email}</TableCell>
+                                      <TableCell>{row.message}</TableCell>
+                                    </TableRow>
+                                  ))}
+                                </TableBody>
+                              </Table>
+                            </TableContainer>
+                          </Grid>
+                        </Grid>
+                        <br />
+                        <br />
+                        <Box textAlign="center">
+                          {" "}
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            type="submit"
+                            onClick={handleClose}
+                            // onClick={updateNotification}
+                          >
+                            Ok
+                          </Button>
+                        </Box>
+                      </Box>
+                    </Modal>
+
+                    <MenuItem
+                     onClick={handleMessage}
+                    >
+                      <IconButton
+                        size="large"
+                        aria-label="show 17 new notifications"
+                        color="inherit"
+                      >
+                        <Badge
+                          // badgeContent={5}
+                          // badgeConent={getRows == '0' ? '0' : getRows}
+                          badgeContent={getRows == "0" ? "0" : getRows}
+                          color="error"
+                        >
+                          <NotificationsIcon />
+                        </Badge>
+                      </IconButton>
+                    </MenuItem>
+                  </Box>
                 </Grid>
                 <Button onClick={handleOpen} variant="contained" sx={{ m: 5 }}>
                   Add Driver
@@ -178,10 +284,8 @@ const columns = [
                 />
 
                 <Grid item xs={12}>
-                  <Box
-                    sx={{ height:400, width:'100%'}}
-                  >
-                     Driver
+                  <Box sx={{ height: 400, width: "100%" }}>
+                    Driver
                     <DataGrid
                       rows={displays}
                       columns={columns}
@@ -201,3 +305,14 @@ const columns = [
   );
 }
 export default Admin_dashboard;
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
