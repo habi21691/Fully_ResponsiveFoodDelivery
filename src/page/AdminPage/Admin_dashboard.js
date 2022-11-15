@@ -257,20 +257,31 @@ function Admin_dashboard() {
                     <MenuItem
                      onClick={handleMessage}
                     >
+                       <Paper
+                    sx={{
+                      p: 2,
+                      display: "flex",
+                      flexDirection: "column",
+                      height: 240,
+                    }}
+                    >
+                    Message from the Customer
+
                       <IconButton
                         size="large"
                         aria-label="show 17 new notifications"
                         color="inherit"
-                      >
+                        >
                         <Badge
                           // badgeContent={5}
                           // badgeConent={getRows == '0' ? '0' : getRows}
                           badgeContent={getRows == "0" ? "0" : getRows}
                           color="error"
-                        >
+                          >
                           <MailIcon />
                         </Badge>
                       </IconButton>
+                          </Paper>
                     </MenuItem>
                   </Box>
                 </Grid>
