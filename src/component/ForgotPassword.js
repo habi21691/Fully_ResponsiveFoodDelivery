@@ -11,7 +11,7 @@ function ForgotPassword() {
     try {
       
       const {respose} = await axios.post(
-       "https://mernfood-delivery.onrender.com/api/sendEmail",
+       "https://mernfood-delivery.onrender.com/api/forgot_password",
        data
      )
      console.log(respose.data)
