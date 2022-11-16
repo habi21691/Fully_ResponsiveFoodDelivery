@@ -31,7 +31,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 
 
-  const [error, setError] = useState(true);
+  const [error, setError] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
 
@@ -72,7 +72,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   
     setOpenSnackbar(true);
    
-    setError(false)
+    // setError(false)
 
     const user = {
       username: username,
@@ -83,7 +83,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
       .then((data) => {
         console.log(data.data.user._id);
         if (data.status === 200) {
-        
+        setError(true)
           console.log(error);
           if (data.data.accessToken) {
             if (data.data.user.role === "User") {

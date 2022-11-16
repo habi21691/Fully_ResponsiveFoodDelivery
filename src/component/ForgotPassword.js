@@ -13,7 +13,11 @@ function ForgotPassword() {
       const {respose} = await axios.post(
        "https://mernfood-delivery.onrender.com/api/sendMail",
        data
-     )
+     ).then( (res)=>{
+      return res.status(200).json(res.data)
+     }).catch( (err) =>{
+      console.log(err)
+     })
      console.log(respose.data)
      
    } catch (error) {
