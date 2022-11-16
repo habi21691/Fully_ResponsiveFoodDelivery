@@ -134,6 +134,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
       });
 
     setIsSumbiting(false);
+    setError(false)
       };
 
   return (
@@ -227,7 +228,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                 </Link>
               </Box>
               <Stack>
-                {error ?(
+                {!error ?(
                   <Snackbar
                     open={openSnackbar}
                     onClose={closeSnackbar}
