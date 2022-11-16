@@ -21,7 +21,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
- function Signin() {
+function Signin() {
   const { user, setUser, isLoggedIn, setLog, setCookie } = useContext(
     AuthContext
   );
@@ -29,15 +29,10 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   const [password, setPassword] = useState("");
   const [isSubmmiting, setIsSumbiting] = useState(false);
 
-
-
   const [error, setError] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
-
-
   // const notify = () => toast("Wow so easy!");
-  
 
   const navigator = useNavigate();
 
@@ -62,17 +57,14 @@ const Alert = React.forwardRef(function Alert(props, ref) {
     setOpenSnackbar(false);
   };
 
-
-  const [errorMessage, setErrorMessage] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsSumbiting(true);
- 
+
     setOpenSnackbar(true);
 
-   
-   
     // setError(false)
 
     const user = {
@@ -84,8 +76,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
       .then((data) => {
         console.log(data.data.user._id);
         if (data.status === 200) {
-       
-          setErrorMessage('Successfully Login')
+          setErrorMessage("Successfully Login");
           console.log(error);
           if (data.data.accessToken) {
             if (data.data.user.role === "User") {
@@ -106,43 +97,41 @@ const Alert = React.forwardRef(function Alert(props, ref) {
               setCookie("token", data.data.accessToken, { path: "/" });
               setLog(true);
               navigator("/Task");
-            } 
-           
             }
+          }
 
           //---------------------------------
           // WANT TO CLOSE LOGIN DIALOG HERE;
           //---------------------------------
         } else if (data.status === 404) {
-          setErrorMessage('try again')
+          setErrorMessage("try again");
           // setError(true)
           console.log("naughty naughty");
           // setMsg("User Error")
-        
+
           //---------------------------------
           // WANT TO DISPLAY SNACKBAR HERE
           //---------------------------------
         } else if (data.status === 504) {
           // setError(true)
-          setErrorMessage('try again')
+          setErrorMessage("try again");
 
           console.log("off it's hinges, innit");
-          
         } else {
-          setErrorMessage('try again')
+          setErrorMessage("try again");
 
           console.log("sumat went bang");
         }
       })
       .catch((err, data) => {
-        setErrorMessage('try again')
+        setErrorMessage("try again");
 
         // setError(true)
       });
 
     setIsSumbiting(false);
-    setError(false)
-      };
+    setError(false);
+  };
 
   return (
     <div className="container">
@@ -158,7 +147,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
           // backgroundColor:'black'
         }}
       >
-        <Grid item xs={8} >
+        <Grid item xs={8}>
           {/* <Button onClick={notify}>notify</Button>
           <ToastContainer/> */}
           <Paper
@@ -166,7 +155,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
               p: 2,
               height: 300,
               width: 300,
-              marginTop:'5em',
+              marginTop: "5em",
               backgroundColor: (theme) =>
                 theme.palette.mode === "dark" ? "#151e27" : "#fff",
             }}
@@ -185,10 +174,10 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                 </Typography>
                 <Box marginY={2} />
                 <TextField
-                type={'text'}
+                  type={"text"}
                   required
                   fullWidth
-                  inputProps={{maxLength:30, minLength:6}}
+                  inputProps={{ maxLength: 30, minLength: 6 }}
                   variant="standard"
                   value={username}
                   label="User Name:"
@@ -196,19 +185,18 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                     setUserName(event.target.value);
                   }}
                   rules={{
-                    required: 'Enter Email',
+                    required: "Enter Email",
                     pattern: {
                       value: /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                      message: 'Please enter a valid Email'
-                    }
-                 }}
+                      message: "Please enter a valid Email",
+                    },
+                  }}
                 />
                 <Box marginY={2} />
                 <TextField
                   required
                   fullWidth
-                  inputProps={{maxLength:6, minLength:6}}
-
+                  inputProps={{ maxLength: 6, minLength: 6 }}
                   variant="standard"
                   label="Password:"
                   value={password}
@@ -224,18 +212,34 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                   type="submit"
                 >
                   {isSubmmiting ? (
-                    <CircularProgress size={"20px"} color={"success"}  />
+                    <CircularProgress size={"20px"} color={"success"} />
                   ) : (
                     "Sign In"
                   )}
                 </Button>
-                <Link underline="none" href="/ForgotPassword">Forgot Password?</Link>
-                <Link underline="none" href="https://habifooddelivery.netlify.app/Register" marginX={18}>
+                <Link underline="none" href="/ForgotPassword">
+                  Forgot Password?
+                </Link>
+                <Link
+                  underline="none"
+                  href="https://habifooddelivery.netlify.app/Register"
+                  marginX={18}
+                >
                   Register
                 </Link>
               </Box>
               <Stack>
-              {errorMessage && <Snackbar open={errorMessage} message={errorMessage} />}
+                {errorMessage && (
+                  <Snackbar
+                    open={errorMessage}
+                    message={errorMessage}
+                    anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                  >
+                      <Alert onClose={closeSnackbar} severity="error">
+                      Oops! Something went wrong,try again later.
+                    </Alert>
+                  </Snackbar>
+                )}
                 {/* {error ?(
                   <Snackbar
                     open={openSnackbar}
@@ -259,7 +263,6 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                   </Alert>
                 </Snackbar>
               ) } */}
-              
               </Stack>
             </form>
           </Paper>
