@@ -233,6 +233,7 @@ function Signin() {
                   <Snackbar
                     open={errorMessage}
                     message={errorMessage}
+                    autoHideDuration={500}
                     anchorOrigin={{ vertical: "top", horizontal: "center" }}
                   >
                       <Alert onClose={closeSnackbar} severity="error">
