@@ -112,7 +112,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
           // WANT TO CLOSE LOGIN DIALOG HERE;
           //---------------------------------
         } else if (data.status === 404) {
-          setError(true)
+          // setError(true)
           console.log("naughty naughty");
           // setMsg("User Error")
         
@@ -120,7 +120,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
           // WANT TO DISPLAY SNACKBAR HERE
           //---------------------------------
         } else if (data.status === 504) {
-          setError(true)
+          // setError(true)
           console.log("off it's hinges, innit");
           
         } else {
@@ -130,7 +130,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
       })
       .catch((err, data) => {
      
-        setError(true)
+        // setError(true)
       });
 
     setIsSumbiting(false);
