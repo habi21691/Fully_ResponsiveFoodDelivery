@@ -55,6 +55,7 @@ function Signin() {
 
   const closeSnackbar = () => {
     setOpenSnackbar(false);
+    setErrorMessage(false)
   };
 
   const [errorMessage, setErrorMessage] = useState(null);
@@ -233,7 +234,7 @@ function Signin() {
                   <Snackbar
                     open={errorMessage}
                     message={errorMessage}
-                    autoHideDuration={500}
+                    autoHideDuration={200}
                     anchorOrigin={{ vertical: "top", horizontal: "center" }}
                   >
                       <Alert onClose={closeSnackbar} severity="error">
