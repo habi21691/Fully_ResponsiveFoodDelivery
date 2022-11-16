@@ -63,13 +63,14 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   };
 
 
-  
+  const [errorMessage, setErrorMessage] = useState(null)
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsSumbiting(true);
  
-  
+    setOpenSnackbar(true);
+
    
    
     // setError(false)
@@ -82,9 +83,9 @@ const Alert = React.forwardRef(function Alert(props, ref) {
       .post("https://mernfood-delivery.onrender.com/api/Signin", user)
       .then((data) => {
         console.log(data.data.user._id);
-        setOpenSnackbar(true);
         if (data.status === 200) {
-        setError(true)
+       
+          setErrorMessage('Successfully Login')
           console.log(error);
           if (data.data.accessToken) {
             if (data.data.user.role === "User") {
@@ -113,6 +114,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
           // WANT TO CLOSE LOGIN DIALOG HERE;
           //---------------------------------
         } else if (data.status === 404) {
+          setErrorMessage('try again')
           // setError(true)
           console.log("naughty naughty");
           // setMsg("User Error")
@@ -122,15 +124,19 @@ const Alert = React.forwardRef(function Alert(props, ref) {
           //---------------------------------
         } else if (data.status === 504) {
           // setError(true)
+          setErrorMessage('try again')
+
           console.log("off it's hinges, innit");
           
         } else {
-       
+          setErrorMessage('try again')
+
           console.log("sumat went bang");
         }
       })
       .catch((err, data) => {
-     
+        setErrorMessage('try again')
+
         // setError(true)
       });
 
@@ -229,7 +235,8 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                 </Link>
               </Box>
               <Stack>
-                {!error ?(
+              {errorMessage && <Snackbar open={errorMessage} message={errorMessage} />}
+                {/* {error ?(
                   <Snackbar
                     open={openSnackbar}
                     onClose={closeSnackbar}
@@ -251,7 +258,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                     Hi {username},Successfuly Logged !!!
                   </Alert>
                 </Snackbar>
-              ) }
+              ) } */}
               
               </Stack>
             </form>
