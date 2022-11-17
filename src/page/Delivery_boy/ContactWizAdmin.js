@@ -7,7 +7,9 @@ import {
   Card,
   MenuItem,
   Typography,
+  CircularProgress,
 } from "@mui/material";
+import CheckIcon from '@mui/icons-material/Check';
 import Appbar from "../../sharedComponent/Appbar";
 import { PhoneRounded } from "@mui/icons-material";
 import { useForm } from "react-hook-form";
@@ -36,6 +38,9 @@ function ContactWizAdmin() {
   const [customername, setcustomername] = useState("");
   const [address, setAddress] = useState("");
   const [phonenumber, setPhoneNumber] = useState("");
+  const [isSubmmiting, setIsSumbiting] = useState(false)
+
+  const [check, setCheck] =useState(false)
 
   const {
     register,
@@ -47,6 +52,15 @@ function ContactWizAdmin() {
 
   async function onSubmit(data1) {
     console.log(data1);
+    setIsSumbiting(true)
+    setTimeout( ()=>{
+      setIsSumbiting(false)
+      setCheck(true)
+      setTimeout( () =>{
+          setCheck(false)
+      },1700)
+    },2000)
+    // setCheck(true)
     const data ={
       customername: customername,
       address: address,
@@ -55,6 +69,7 @@ function ContactWizAdmin() {
     }
     await axios.post('https://mernfood-delivery.onrender.com/api/getfeadbackfromDelivery',data).then( (response) =>{
       return response
+      
     }).catch( (errors) => {
       console.log(errors)
     })
@@ -73,6 +88,7 @@ function ContactWizAdmin() {
           // style={{ minHeight: '100vh' }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
+          
           <Card
             sx={{ mt: 20, minWidth: 100, maxWidth: 300 }}
             style={{
@@ -144,7 +160,12 @@ function ContactWizAdmin() {
                 sx={{ mt: 3 }}
                 onClick={handleSubmit(onSubmit)}
               >
-                Send
+                {
+                isSubmmiting 
+                ? "Processing...."
+                : check ? "Sent":"Send"
+              }
+                
               </Button>
             </CardContent>
           </Card>
