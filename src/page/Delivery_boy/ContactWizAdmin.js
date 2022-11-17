@@ -137,7 +137,7 @@ function ContactWizAdmin() {
                 <MenuItem value={"not deliver"}>Not Deliver</MenuItem>
                 <MenuItem value={"On The Way"}>On The Way</MenuItem>
               </TextField>
-
+                   {errors.status && <p id={'error'}>{errors.status.message}</p>}
               <Button
                 variant="contained"
                 fullWidth
