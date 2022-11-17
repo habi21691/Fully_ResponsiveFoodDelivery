@@ -66,8 +66,16 @@ function Admin_dashboard() {
 
   const [message, setMessage] = useState(false);
 
+  const [messagefromDriver, setMessagefromDriver] = useState(false)
+  const [datafordrive, setDatafromDriver] = useState([])
+  const [count2, setCount2] = useState([])
+
   function handleMessage () {
     setMessage(true)
+  }
+
+  function handleMessagefromtheDriver () {
+         setMessagefromDriver(true)
   }
 
   useEffect(() => {
@@ -80,7 +88,15 @@ function Admin_dashboard() {
           setRows(res.data.length);
         });
     };
+    const getnotificatinfromDriver = async () =>{
+      await axios.get('https://mernfood-delivery.onrender.com/api/feaching').then( (res) =>{
+        console.log(res.data)
+        setDatafromDriver(res.data)
+        setCount2(res.data.length)
+      })
+    }
     getnotification();
+    getnotificatinfromDriver();
   }, []);
 
   const columns = [
@@ -108,6 +124,7 @@ function Admin_dashboard() {
   const handleClose = () => {
     setOpen(false);
     setMessage(false)
+    setMessagefromDriver(false)
 
   };
   const [open, setOpen] = useState(false);
@@ -183,6 +200,7 @@ function Admin_dashboard() {
                       display: "flex",
                       flexDirection: "column",
                       height: 240,
+                  
                     }}
                   >
                     <Deposits />
@@ -238,7 +256,78 @@ function Admin_dashboard() {
                           </Grid>
                         </Grid>
                         <br />
+                      
+                        <Box textAlign="center">
+                          {" "}
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            type="submit"
+                            onClick={handleClose}
+                            // onClick={updateNotification}
+                          >
+                            Ok
+                          </Button>
+                        </Box>
+                      </Box>
+                    </Modal>
+
+                    <Modal
+                      open={messagefromDriver}
+                      onClose={handleClose}
+                      aria-labelledby="modal-modal-title"
+                      aria-describedby="modal-modal-description"
+                    >
+                      <Box sx={style}>
+                        <Grid container spacing={2}>
+                          <Grid>
+                            <TableContainer component={Paper}>
+                              <Table
+                                sx={{ minWidth: 250 }}
+                                size="small"
+                                aria-label="a dense table"
+                              >
+                                <TableHead>
+                                  <TableRow>
+                                    <TableCell component="th">
+                                      <b> Customer Name</b>
+                                    </TableCell>
+                                    <TableCell component="th">
+                                      <b>Adress</b>
+                                    </TableCell>
+                                    <TableCell component="th">
+                                      <b>Phone Number</b>
+                                    </TableCell>
+                                    <TableCell component="th">
+                                      <b>Status</b>
+                                    </TableCell>
+                                  </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                  {datafordrive.map((row, index) => (
+                                    <TableRow
+                                      style={{
+                                        backgroundColor:
+                                          row.status == "0"
+                                            ? "#ccffcc"
+                                            : "white",
+                                      }}
+                                      key={index}
+                                    >
+                                      <TableCell> {row.customername} </TableCell>
+                                      <TableCell>{row.address}</TableCell>
+                                      <TableCell>{row.phonenumber}</TableCell>
+                                      <TableCell>{row.status}</TableCell>
+
+                                    </TableRow>
+                                  ))}
+                                </TableBody>
+                              </Table>
+                            </TableContainer>
+                          </Grid>
+                        </Grid>
                         <br />
+                      
                         <Box textAlign="center">
                           {" "}
                           <Button
@@ -255,7 +344,7 @@ function Admin_dashboard() {
                     </Modal>
 
                     <MenuItem
-                     onClick={handleMessage}
+                     
                     >
                        <Paper
                     sx={{
@@ -265,7 +354,7 @@ function Admin_dashboard() {
                       height: 240,
                     }}
                     >
-                    Message from the Customer
+                    <Typography sx={{mt:4}}>Message from the Customer </Typography>
 
                       <IconButton
                         size="large"
@@ -273,12 +362,29 @@ function Admin_dashboard() {
                         color="inherit"
                         >
                         <Badge
+                        
                           // badgeContent={5}
                           // badgeConent={getRows == '0' ? '0' : getRows}
                           badgeContent={getRows == "0" ? "0" : getRows}
                           color="error"
                           >
-                          <MailIcon />
+                          <MailIcon onClick={handleMessage} />
+                        </Badge>
+                      </IconButton>
+                      <Typography>Massage From The the Driver</Typography>
+                      <IconButton
+                        size="large"
+                        aria-label="show 17 new notifications"
+                        color="inherit"
+                        >
+                        <Badge
+                        
+                          // badgeContent={5}
+                          // badgeConent={getRows == '0' ? '0' : getRows}
+                          badgeContent={count2 == "0" ? "0" : count2}
+                          color="error"
+                          >
+                          <MailIcon onClick={handleMessagefromtheDriver} />
                         </Badge>
                       </IconButton>
                           </Paper>
