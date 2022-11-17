@@ -57,15 +57,15 @@ export default function Home() {
     ];
   } else if (user.role === "Delivery") {
     pages = [
-      user.username === "deliver1"
-        ? {
-            name: "Task",
-            link: "/task",
-          }
-        : {
-            name: "Task2",
-            link: "/task",
-          },
+     {
+      name:'Task',
+      link:'/task'
+
+     },
+     {
+      name: 'Send Report',
+      link: '/report'
+     }
     ];
   }
 

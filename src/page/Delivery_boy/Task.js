@@ -1,4 +1,4 @@
-import { Card, CardActions } from '@mui/material'
+import { Button, Card, CardActions, CircularProgress, InputLabel, NativeSelect } from '@mui/material'
 import { Container } from '@mui/system'
 import axios from 'axios'
 import React, { useEffect, useState,useContext, } from 'react'
@@ -9,17 +9,22 @@ import AuthContext from '../../Contexts/AuthContext';
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import Avatar from '@mui/material/Avatar'
-import Button from '@mui/material/Button'
+import Box from '@mui/material/Box'
 import Location from './Location'
-
-
+import {FormControl} from '@mui/material'
+import DoneIcon from '@mui/icons-material/Done';
+import ContactWizAdmin from './ContactWizAdmin'
  function Task() {
 
   const {user} = useContext(AuthContext);
   const [data, setData] = useState('')
 
-
-
+ const [isSubmmiting, setSubmmiting] = useState(false)
+ const [check, setCheck] = useState(false)
+  function handleSendMessage () {
+    setSubmmiting(true)
+    setCheck(true)
+  }
   useEffect(() => {
     const fetchingTask = () => {
       axios.get('https://mernfood-delivery.onrender.com/api/oderedTaskForDelivery/' +user.username).then((response) => {
@@ -34,7 +39,7 @@ import Location from './Location'
   return (
     <div>
       <Appbar/>
-      <Container display='flex' justifyContent='center' sx={{ pt: 16 }}>
+      <Container display='flex'  sx={{ pt: 16 }}>
         
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
           {data ? data.map((product, index) => (
@@ -62,17 +67,17 @@ import Location from './Location'
                      date: {product.date}
                     </Typography>
                     <CardActions>
-                      <Button sx={{
-                        // paddingLeft:3
-                      }}>delivered</Button>
+                          
+                    {/* <Button onClick={handleSendMessage}>{isSubmmiting ?<CircularProgress/>:check?<DoneIcon/>:"send"}</Button> */}
                     </CardActions>
                 </CardContent>
               </Card>
+              
             </Grid>
             )):<></>
 }
+
         </Grid>
-      
       </Container>
             {/* <Map /> */}
          <Location/>

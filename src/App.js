@@ -21,6 +21,7 @@ const OrderView = lazy(() => import("./component/OrderView"));
 const AddToFoodlist = lazy( () => import('./component/AddToFoodlist'))
 const ForgotPassword =lazy( () => import('./component/ForgotPassword'))
 // const Message =lazy( () => import('./component/Message'))
+const ContactWizAdmin = lazy( () => import('./page/Delivery_boy/ContactWizAdmin'))
 function App() {
   const [user, setUser] = useState({});
   const [waiting, setWating] = useState(false);
@@ -82,6 +83,7 @@ function App() {
             <></>
           )}
           {isLoggedIn ? <Route path="/Task" element={<Task />} /> : <></>}
+          {isLoggedIn ? <Route path="/report" element={<ContactWizAdmin/>}/>:<></>} 
 
         </Routes>
       </Suspense>
