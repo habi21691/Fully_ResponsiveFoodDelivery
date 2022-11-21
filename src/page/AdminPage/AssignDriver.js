@@ -117,7 +117,7 @@ await axios.post('', data).then( (res) => {
           />
            <TextField
             {...register('role')}
-            label="password"
+            label="role"
              hidden={true}
             fullWidth
             variant="standard"
