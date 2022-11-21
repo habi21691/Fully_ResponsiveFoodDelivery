@@ -281,9 +281,9 @@ function Admin_dashboard() {
                       <Box sx={style}>
                         <Grid container spacing={2}>
                           <Grid>
-                            <TableContainer component={Paper}>
+                            <TableContainer >
                               <Table
-                                sx={{ minWidth: 250 }}
+                                sx={{ minWidth: 300 }}
                                 size="small"
                                 aria-label="a dense table"
                               >
