@@ -36,6 +36,7 @@ function AssignDriver(props) {
   const [address, setAddress] = useState("");
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [phone_number, setPhone_Number] = useState("");
   const [role, setRole] =useState('')
  
 
@@ -53,12 +54,13 @@ function AssignDriver(props) {
     const data = {
         fullname: fullname,
         username: username,
+        phone_number: phone_number,
         password: password,
         address: address,
         role: role
     }
     
-await axios.post('', data).then( (res) => {
+await axios.post('https://mernfood-delivery.onrender.com/api/Register', data).then( (res) => {
 
 }).catch( (err) => {
 
@@ -126,6 +128,26 @@ await axios.post('', data).then( (res) => {
               setRole(event.target.role)
             }}
           />
+            <TextField
+                  {...register("phone_number")}
+                  fullWidth
+                  variant="standard"
+                  required
+                  inputProps={{
+                    maxLength: 10,
+                    minLength: 10,
+                    pattern: "[0-9]{10}",
+                  }}
+                  label="Phone_Number:"
+                  type="tel"
+                  value={phone_number}
+                  onChange={(event) => {
+                    setPhone_Number(event.target.value.trim());
+                  }}
+                />
+                {/* {errors.phone_number && (
+                  <p id="error">{errors.phone_number.message}</p>
+                )} */}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleSubmit(onSubmit)}>Add Driver</Button>
