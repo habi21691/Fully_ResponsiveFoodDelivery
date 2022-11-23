@@ -24,6 +24,8 @@ import SimpleImageSlider from "react-simple-image-slider";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import { cartActions} from '../store/cart-slice'
+import { useDispatch, useSelector} from 'react-redux'
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={2} ref={ref} variant="filled" {...props} />;
@@ -131,7 +133,24 @@ function Menu() {
   const handlePictureChange = (event) => {
     setFile(event.target.files[0]);
 
-  };
+  }
+//dispatch
+
+const dispatch = useDispatch();
+
+function  addHandler  (_id, name, price,image) { 
+
+ 
+  dispatch(
+    cartActions.addCart({
+      _id:  _id,
+      name: name,
+      price: price,
+      image: image
+    })
+  )
+}
+
   const {
     register,
     handleSubmit,
@@ -351,6 +370,9 @@ function Menu() {
                     />
 
                     <CardContent>
+                    {/* <Typography gutterBottom variant="h5" component="div">
+                        {product._id}
+                      </Typography> */}
                       <Typography gutterBottom variant="h5" component="div">
                         {product.name}
                       </Typography>
@@ -367,6 +389,7 @@ function Menu() {
                       variant="contained"
                       onClick={(ev) => {
                         openModal(product.name, product.price);
+                        addHandler( product._id, product.name, product.price, product.image)
                       }}
                       color="info"
                     >

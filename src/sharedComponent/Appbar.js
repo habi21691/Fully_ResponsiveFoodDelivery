@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import AuthContext from "../Contexts/AuthContext";
 import Badge from "@mui/material/Badge";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 export default function Home() {
   const { user, setLog, setUser, setCookie } = useContext(AuthContext);
@@ -37,6 +38,11 @@ export default function Home() {
         name: "Contact",
         link: "/Contact",
       },
+      {
+        name:'Cart',
+        icon: <ShoppingCartIcon />,
+        link:'/Cart'
+      }
     ];
   } else if (user.role === "admin") {
     pages = [
@@ -173,7 +179,12 @@ export default function Home() {
                 >
                   <Typography textAlign="center" textTransform={"none"}>
                     {page.name}
+                    
                   </Typography>
+                 
+                    {page.icon}
+                    
+               
                 </MenuItem>
               ))}
             </Menu>
@@ -213,7 +224,18 @@ export default function Home() {
                 }}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
+                <Typography sx={{
+                   display: 'flex',
+                   justifyContent: 'space-between',
+               
+                 
+               
+                
+                }}>
+
                 {page.name}
+                {page.icon}
+                </Typography>
               </Button>
             ))}
           </Box>

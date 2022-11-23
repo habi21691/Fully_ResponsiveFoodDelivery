@@ -33,7 +33,6 @@ const schema = yup.object().shape({
 
 function AssignDriver(props) {
   const [fullname, setFullName] = useState("");
-  const [address, setAddress] = useState("");
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [phone_number, setPhone_Number] = useState("");
@@ -56,7 +55,6 @@ function AssignDriver(props) {
         username: username,
         phone_number: phone_number,
         password: password,
-        address: address,
         role: role
     }
     
@@ -94,38 +92,26 @@ await axios.post('https://mernfood-delivery.onrender.com/api/Register', data).th
               setUserName(event.target.value);
             }}
           />
-          <TextField
-          {...register('address')}
-            label="address"
-            variant="standard"
-            value={address}
-            fullWidth
-          
-            onChange={(event) => {
-              setAddress(event.target.value);
-            }}
-          />
-
-          <TextField
-            {...register('password')}
-            label="password"
-            type={"password"}
-            fullWidth
-            variant="standard"
+         
+         <TextField
+          {...register('password')}
             value={password}
+            label="Password"
+            fullWidth
+            variant="standard"
             onChange={(event) => {
-              setPassword(event.target.password);
+              setPassword(event.target.value);
             }}
           />
            <TextField
             {...register('role')}
             label="role"
-             hidden={true}
+          
             fullWidth
             variant="standard"
             value={role}
             onChange={(event) => {
-              setRole(event.target.role)
+              setRole(event.target.value)
             }}
           />
             <TextField
