@@ -49,7 +49,7 @@ function CartItem() {
             </CardContent>
               <CardActions>
 
-              <Button onClick={removeCart}>Share</Button>
+              <Button onClick={removeCart}>X</Button>
               </CardActions>
   
        
