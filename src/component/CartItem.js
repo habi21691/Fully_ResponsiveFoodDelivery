@@ -30,9 +30,7 @@ function CartItem() {
               },
             }}
           >
-            {/* <CardTitle>
- 
-             </CardTitle> */}
+           
             <CardMedia
               component="img"
               height="120"
@@ -55,9 +53,7 @@ function CartItem() {
        
           </Card>
         ))}
-      {/* <CardAction>
- 
-            </CardAction> */}
+     
     </>
   );
 }

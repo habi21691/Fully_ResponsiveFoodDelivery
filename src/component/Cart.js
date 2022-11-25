@@ -21,7 +21,7 @@ function Cart  ()  {
         <Box mt={10}>
 
         <h2>Cart: {amount} item</h2>
-          {showCart}
+          {/* {showCart} */}
         <CartItem id={2} name={'habi'}/>
         </Box>
 
