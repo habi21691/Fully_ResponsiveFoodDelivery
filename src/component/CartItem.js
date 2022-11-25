@@ -1,11 +1,18 @@
 import React from "react";
 
-import { Card, CardContent, Typography, CardMedia } from "@mui/material";
+import { Card, CardContent, Typography, CardMedia, CardActions, Button } from "@mui/material";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
+
+ import { cartActions } from '../store/cart-slice';
+
 function CartItem() {
   const cartItem = useSelector((state) => state.cart.itemList);
-  console.log(cartItem);
+  // console.log(cartItem);
+  const dispatch = useDispatch();
+   const removeCart = () => {
+     dispatch(cartActions.removeCart())
+   }
   return (
     <>
       {cartItem &&
@@ -14,9 +21,11 @@ function CartItem() {
             key={index}
             sx={{
               display: "flex",
+              justifyContent:'center',
+              alignItem: 'center',
               "& > :not(style)": {
                 m: 1,
-                width: 130,
+                width: 80,
                 height: 130,
               },
             }}
@@ -38,6 +47,12 @@ function CartItem() {
               <Typography>ToatalPrice: {item.totalprice}</Typography>
               <Typography>Amount: {item.amount}</Typography>
             </CardContent>
+              <CardActions>
+
+              <Button onClick={removeCart}>Share</Button>
+              </CardActions>
+  
+       
           </Card>
         ))}
       {/* <CardAction>

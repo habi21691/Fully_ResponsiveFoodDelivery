@@ -26,6 +26,9 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { cartActions} from '../store/cart-slice'
 import { useDispatch, useSelector} from 'react-redux'
+import "yup-phone";
+import ET from 'country-flag-icons/react/1x1/ET'
+
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={2} ref={ref} variant="filled" {...props} />;
@@ -69,11 +72,8 @@ const images = [
 const schema = yup.object().shape({
   fullname: yup.string().required("Fullname is Required"),
   address: yup.string().required("Adress is Required"),
-  phonenumber: yup
-    .number()
-    .positive()
-    .integer()
-
+  phonenumber: yup.string()
+    .phone('ET', true)
     .required("phoneNumber is Required"),
   amount: yup
     .number()
@@ -272,6 +272,12 @@ function  addHandler  (_id, name, price,image) {
               variant="standard"
             />
             {errors.address && <p id="error">{errors.address.message}</p>}{" "}
+            <Grid 
+            marginY={2}
+            container
+            direction='row'
+            >
+              <ET title='Ethiopia' style={{ width:'20px', height:'20px'}}/>
             <TextField
               autoFocus
               margin="dense"
@@ -282,9 +288,10 @@ function  addHandler  (_id, name, price,image) {
                 setPhoneNuber(event.target.value);
               }}
               label="PhoneNumber"
-              fullWidth
+              // fullWidth
               variant="standard"
             />
+            </Grid>
             {errors.phonenumber && (
               <p id="error">{errors.phonenumber.message}</p>
             )}{" "}
@@ -294,6 +301,7 @@ function  addHandler  (_id, name, price,image) {
               margin="dense"
               {...register("name")}
               value={name}
+
               label="Name"
               fullWidth
               variant="standard"

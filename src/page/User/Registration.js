@@ -17,8 +17,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import IconButton from "@mui/material/IconButton";
 import { Input, FormControl, InputLabel, InputAdornment } from "@mui/material";
 import * as yup from "yup";
+import "yup-phone";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import ET from 'country-flag-icons/react/1x1/ET'
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -35,9 +37,8 @@ const schema = yup.object().shape({
     .required("Email Require * "),
   password: yup.string().required("Password Require *"),
   phone_number: yup
-    .number()
-    .positive()
-    .integer()
+    .string()
+    .phone("ET", true)
     .required("PhoneNumber Require *"),
 });
 
@@ -80,7 +81,7 @@ function Registration() {
       password: password,
       phone_number: phone_number,
     };
-
+    console.log(data);
     axios
       .post("https://mernfood-delivery.onrender.com/api/Register", data)
       .then(function(data) {
@@ -91,7 +92,7 @@ function Registration() {
         setIsSubmmiting(false);
         setErr(false);
       });
-    // setErr(true);
+    setErr(true);
     setIsSubmmiting(false);
     console.log(err);
   };
@@ -142,13 +143,6 @@ function Registration() {
                     minLength: 7,
                     // pattern:'[a-z]+[a-z]'
                   }}
-                  //   rules={{
-                  //     required: 'Enter fullname',
-                  //     pattern: {
-                  //       value:'/^[a-zA-Z]+ [a-zA-Z]/',
-                  //       message: 'Please enter a valid fullname'
-                  //     }
-                  //  }}
                   label="Full Name:"
                   value={fullname}
                   onChange={(event) => {
@@ -198,24 +192,26 @@ function Registration() {
                   }}
                 />
                 {errors.password && <p id="error">{errors.password.message}</p>}
-                <Box marginY={2} />
+                <Grid marginY={2} 
+                container
+                direction='row'
+               
+                >
+                <ET title="Ethiopia" className="..." style={{width:'20px', heigth:'20px'}}/>
                 <TextField
                   {...register("phone_number")}
-                  fullWidth
+                  sx={{pl:2}}
                   variant="standard"
                   required
-                  inputProps={{
-                    maxLength: 10,
-                    minLength: 10,
-                    pattern: "[0-9]{10}",
-                  }}
                   label="Phone_Number:"
                   type="tel"
                   value={phone_number}
-                  onChange={(event) => {
-                    setPhone_Number(event.target.value.trim());
-                  }}
+                  onChange={(event) => setPhone_Number(event.target.value)}
+                  id="phone-input"
                 />
+
+                
+                  </Grid>
                 {errors.phone_number && (
                   <p id="error">{errors.phone_number.message}</p>
                 )}
